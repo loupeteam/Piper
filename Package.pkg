@@ -9,5 +9,7 @@
     <Object Type="Program" Language="IEC" Description="Program">PiperModuleTemplate</Object>
     <Object Type="Program" Language="ANSIC" Description="Program">cPiperModuleTemplate</Object>
     <Object Type="Library" Language="ANSIC" Description="Machine state controller">Piper</Object>
+    <Object Type="File">LICENSE</Object>
+    <Object Type="File">README.md</Object>
   </Objects>
 </Package>
