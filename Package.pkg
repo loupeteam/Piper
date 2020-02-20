@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.5.4.123 SP?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Global data types">MachineControl.typ</Object>
+    <Object Type="File" Description="Global variables">MachineControl.var</Object>
+    <Object Type="Program" Language="IEC" Description="Program for top level machine control">MachineHMI</Object>
+    <Object Type="Program" Language="IEC" Description="Program for top level machine control">MachineProg</Object>
+    <Object Type="Program" Language="IEC" Description="Program">PiperModuleTemplate</Object>
+    <Object Type="Program" Language="ANSIC" Description="Program">cPiperModuleTemplate</Object>
+    <Object Type="Library" Language="ANSIC" Description="Machine state controller">Piper</Object>
+  </Objects>
+</Package>

@@ -1,0 +1,16 @@
+(********************************************************************
+ * COPYRIGHT --  
+ ********************************************************************
+ * Library: Piper
+ * File: Piper.var
+ * Author: Josh
+ * Created: October 02, 2013
+ ********************************************************************
+ * Constants of library Piper
+ ********************************************************************)
+VAR CONSTANT
+	PIPER_DEFAULT_BOOTING_CYCLES : UINT := 50;
+	MAI_PIPER_MODULES : USINT := 99;
+	PIPER_DEFAULT_LOGGERNAME : STRING[LOG_STRLEN_LOGGERNAME] := 'App';
+	IDLE_SUBSTATE : DINT := 65535;
+END_VAR

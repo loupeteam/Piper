@@ -1,0 +1,14 @@
+(********************************************************************
+ * COPYRIGHT --  
+ ********************************************************************
+ * Program: cPiperModuleTemplate
+ * File: cPiperModuleTemplate.var
+ * Author: dfblackburn
+ * Created: April 06, 2016
+ ********************************************************************
+ * Local variables of program cPiperModuleTemplate
+ ********************************************************************)
+VAR
+	ModuleInterface : Module_Interface_typ;
+	Module : Piper_Module_Fub;
+END_VAR

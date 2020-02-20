@@ -1,0 +1,19 @@
+(********************************************************************
+ * COPYRIGHT -- Automation Resources Group
+ ********************************************************************
+ * Program: MachineProg
+ * File: MachineProg.var
+ * Author: David Blackburn
+ * Created: November 10, 2011
+ ********************************************************************
+ * Local variables of program MachineProg
+ ********************************************************************)
+VAR
+	StatusModule : Module_Interface_typ;
+	Module : REFERENCE TO Module_Interface_typ;
+	TON_0 : TON;
+	StateString : STRING[80];
+END_VAR
+VAR RETAIN
+	ByPassAll : BOOL := 0;
+END_VAR
