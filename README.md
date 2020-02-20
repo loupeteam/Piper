@@ -1,4 +1,4 @@
-# piper
+# Piper
 
 Piper is used to control the state of a machine allowing machines to be built in subsystems in a modular way. Piper-based systems divide the functions of a machine into modules, each with their own task. Each module’s behavior is defined using a common set of machine states per the PackML standard.
 
