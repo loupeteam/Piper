@@ -1,3 +1,5 @@
+0.1.8 - Remove BRSE_ARL dependency
+
 0.1.7 - Add Boot cycles to CFG
 		Fix substate incrementing before configured boot cycles
 

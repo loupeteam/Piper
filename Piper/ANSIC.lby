@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.5.4.123 SP?>
+<?AutomationStudio FileVersion="4.9"?>
 <Library Version="0.01.7" SubType="ANSIC" Description="A new source library" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File>VersionHistory.txt</File>
@@ -18,7 +18,6 @@
   </Files>
   <Dependencies>
     <Dependency ObjectName="Operator" />
-    <Dependency ObjectName="BRSE_ARL" />
     <Dependency ObjectName="LogThat" FromVersion="0.03.0" />
     <Dependency ObjectName="sys_lib" />
     <Dependency ObjectName="AsBrStr" />

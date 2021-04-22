@@ -26,7 +26,7 @@ plcbit Piper_handleResponseState(struct Piper_typ* Piper)
 {
 
 	struct Module_Interface_typ * Module;
-	BRSE_ARL_Arguments_typ LogData;
+	StrExtArgs_typ LogData;
 	
 	//If we are done with the last step, check if there is another
 	switch (Piper->Internal.ResponseStatus)
