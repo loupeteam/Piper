@@ -24,7 +24,7 @@
 /* Logs a state change. */
 plcbit PiperStateChange(struct Piper_typ* Piper, enum MACH_ST_enum State)
 {
-	BRSE_ARL_Arguments_typ LogData;
+	StrExtArgs_typ LogData;
 	
 	STRING Oldstate[80];
 	STRING Newstate[80];	
