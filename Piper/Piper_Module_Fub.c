@@ -25,7 +25,7 @@
 /* Implements the interface to a pipe */
 void Piper_Module_Fub(struct Piper_Module_Fub* inst)
 {
-	BRSE_ARL_Arguments_typ LogData;
+	StrExtArgs_typ LogData;
 	plcstring ModuleName[80];
 	USINT TaskGroup;
 	USINT ModuleIndex;
