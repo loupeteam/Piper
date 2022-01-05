@@ -65,3 +65,24 @@ FUNCTION PiperStateChange : BOOL (*Logs a state change.*) (*$GROUP=User*)
 		State : MACH_ST_enum;
 	END_VAR
 END_FUNCTION
+
+FUNCTION Piper_fn_Cyclic_remote : BOOL (*Remote Cyclic function*) (*$GROUP=User*)
+	VAR_INPUT
+		Piper : Piper_typ;
+		MainInterface : Module_Interface_typ;
+	END_VAR
+END_FUNCTION
+
+FUNCTION Piper_getState_remote : BOOL (*Gets state and substate from main Piper*) (*$GROUP=User*)
+	VAR_INPUT
+		Piper : Piper_typ;
+		MainInterface : Module_Interface_typ;
+	END_VAR
+END_FUNCTION
+
+FUNCTION Piper_handleResponseState_remote : BOOL (*This function looks at the response state and decides what Step or State to request next*) (*$GROUP=User*)
+	VAR_INPUT
+		Piper : Piper_typ;
+		MainInterface : Module_Interface_typ;
+	END_VAR
+END_FUNCTION

@@ -17,4 +17,5 @@ END_VAR
 VAR
 	gActiveMode : MODE_MACHINE_ENUM := MODE_MACHINE_AUTO;
 	gRequestedMode : MODE_MACHINE_ENUM := MODE_MACHINE_AUTO;
+	gRemotePiperInterface : Module_Interface_typ;
 END_VAR

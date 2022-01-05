@@ -10,5 +10,7 @@
  ********************************************************************)
 
 TYPE
-
+	Configuration_typ : 	STRUCT 
+		piperIsRemote : BOOL;
+	END_STRUCT;
 END_TYPE
