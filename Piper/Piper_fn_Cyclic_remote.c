@@ -24,10 +24,10 @@
 #include <string.h>
 
 /* Remote Cyclic function */
-plcbit Piper_fn_Cyclic_remote(struct Piper_typ* Piper, struct Module_Interface_typ* MainInterface)
+plcbit Piper_fn_Cyclic_remote(struct Piper_typ* Piper)
 {
 	
-	if( (MainInterface == 0) || (Piper == 0) ){
+	if( Piper == 0 ){
 		return 1;
 	}
 	

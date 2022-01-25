@@ -22,7 +22,7 @@
 #endif
 
 /* This function looks at the response state and decides what Step or State to request next */
-plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper, struct Module_Interface_typ* MainInterface)
+plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper)
 {
 
 	struct Module_Interface_typ * Module;
@@ -37,7 +37,7 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper, struct Module_I
 			if( Piper->OUT.SubState < Piper->Internal.NextSubState ){
 						
 				//Grab the next step
-				MainInterface->ModuleSubStateRequest = Piper->Internal.NextSubState;
+				Piper->MainInterface.ModuleSubStateRequest = Piper->Internal.NextSubState;
 
 				//Next step is decided in checkResponses
 				Piper->Internal.NextSubState = 0;
@@ -58,9 +58,9 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper, struct Module_I
 				
 				//We are done with this state
 				Piper->Internal.ResponseStatus = PIPER_RESPONSE_ST_STATE_DONE;
-				MainInterface->ModuleResponse = Piper->OUT.State;
+				Piper->MainInterface.ModuleResponse = Piper->OUT.State;
 				
-				MainInterface->ModuleSubStateRequest = IDLE_SUBSTATE;
+				Piper->MainInterface.ModuleSubStateRequest = IDLE_SUBSTATE;
 				Piper->Internal.NextSubState =	0;
 
 			}				
@@ -69,7 +69,7 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper, struct Module_I
 		case PIPER_RESPONSE_ST_ERROR:
 		
 			// TODO: will this get reset correctly? optimally?
-			MainInterface->ModuleResponse = MACH_ST_ERROR;
+			Piper->MainInterface.ModuleResponse = MACH_ST_ERROR;
 			break;
 
 		case PIPER_RESPONSE_ST_BUSY:

@@ -23,12 +23,12 @@
 #endif
 
 /* Gets state and substate from main Piper */
-plcbit Piper_getState_remote(struct Piper_typ* Piper, struct Module_Interface_typ* MainInterface)
+plcbit Piper_getState_remote(struct Piper_typ* Piper)
 {
-	if( MainInterface->PiperState != Piper->OUT.State ){
-		PiperStateChange(Piper, MainInterface->PiperState);
-	}else if( MainInterface->PiperSubState != Piper->OUT.SubState ){
-		Piper->OUT.SubState = MainInterface->PiperSubState;
+	if( Piper->MainInterface.PiperState != Piper->OUT.State ){
+		PiperStateChange(Piper, Piper->MainInterface.PiperState);
+	}else if( Piper->MainInterface.PiperSubState != Piper->OUT.SubState ){
+		Piper->OUT.SubState = Piper->MainInterface.PiperSubState;
 	}
 	
 	// Reset unseen Machine CMDs; here, mostly for BypassAll, as others are generally unused
