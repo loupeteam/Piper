@@ -14,7 +14,7 @@ TYPE
 		IN : Piper_IN_typ;
 		OUT : Piper_OUT_typ;
 		Internal : Piper_Internal_typ;
-		MainInterface : Module_Interface_typ;
+		IO : Piper_IO_typ;
 	END_STRUCT;
 	Piper_IN_typ : 	STRUCT 
 		CMD : Piper_IN_CMD_typ;
@@ -36,6 +36,9 @@ TYPE
 		Clear : BOOL;
 		BypassAll : BOOL;
 		AcknowledgeError : BOOL;
+	END_STRUCT;
+	Piper_IO_typ : 	STRUCT 
+		MainInterface : Module_Interface_typ;
 	END_STRUCT;
 	Piper_OUT_typ : 	STRUCT 
 		Error : UINT;
