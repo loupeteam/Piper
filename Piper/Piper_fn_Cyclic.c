@@ -46,28 +46,26 @@ plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
 	}
 	// If we're remote, wait for booting to finish before actually acting as a remote
 	if (isRemote && !(Piper->OUT.State == MACH_ST_NOT_READY || Piper->OUT.State == MACH_ST_BOOTING) ){
-		// Get state and substate from main Piper
+		
+		// Send state and substate from main Piper to local modules
 		Piper_getState_remote(Piper);
-	
-		// Propagate state and substate to pipes
 		Piper_setCommand(Piper);
-	
-		// Check responses from pipes
+		
+		// Send responses from local modules to main Piper
 		Piper_checkResponses(Piper);
-	
-		// Propagate response to main Piper
 		Piper_handleResponseState_remote(Piper);
 		
 	} else {
+		
 		//Check responses from Pipers
 		Piper_checkResponses(Piper);
 		Piper_handleResponseState(Piper);
-
+		
 		//////////////////
 		//Implement PackML
 		//////////////////
 		Piper_PackML(Piper);
-				
+		
 		//Set commands to pipes
 		Piper_setCommand(Piper);
 		
