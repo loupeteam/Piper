@@ -12,6 +12,7 @@
 FUNCTION Piper_fn_Cyclic : BOOL (*Master Cyclic function*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
+		isRemote : BOOL;
 	END_VAR
 END_FUNCTION
 
@@ -63,12 +64,6 @@ FUNCTION PiperStateChange : BOOL (*Logs a state change.*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
 		State : MACH_ST_enum;
-	END_VAR
-END_FUNCTION
-
-FUNCTION Piper_fn_Cyclic_remote : BOOL (*Remote Cyclic function*) (*$GROUP=User*)
-	VAR_INPUT
-		Piper : Piper_typ;
 	END_VAR
 END_FUNCTION
 

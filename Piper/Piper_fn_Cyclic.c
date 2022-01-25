@@ -24,7 +24,7 @@
 #include <string.h>
 
 /* Master Cyclic function */
-plcbit Piper_fn_Cyclic(struct Piper_typ* Piper)
+plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
 {
 	
 	if( Piper == 0 ){
@@ -44,18 +44,33 @@ plcbit Piper_fn_Cyclic(struct Piper_typ* Piper)
 			currentPipe++;
 		}
 	}
-	//Check responses from Pipers
-	Piper_checkResponses(Piper);
-	Piper_handleResponseState(Piper);
-
-	//////////////////
-	//Implement PackML
-	//////////////////
-	Piper_PackML(Piper);
-				
-	//Set commands to pipes
-	Piper_setCommand(Piper);	
+	if (isRemote){
+		// Get state and substate from main Piper
+		Piper_getState_remote(Piper);
 	
+		// Propagate state and substate to pipes
+		Piper_setCommand(Piper);
+	
+		// Check responses from pipes
+		Piper_checkResponses(Piper);
+	
+		// Propagate response to main Piper
+		Piper_handleResponseState_remote(Piper);
+		
+	} else {
+		//Check responses from Pipers
+		Piper_checkResponses(Piper);
+		Piper_handleResponseState(Piper);
+
+		//////////////////
+		//Implement PackML
+		//////////////////
+		Piper_PackML(Piper);
+				
+		//Set commands to pipes
+		Piper_setCommand(Piper);
+		
+	}
 	return 0;
 	
 }
