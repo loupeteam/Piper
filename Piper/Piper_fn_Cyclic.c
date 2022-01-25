@@ -44,7 +44,8 @@ plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
 			currentPipe++;
 		}
 	}
-	if (isRemote){
+	// If we're remote, wait for booting to finish before actually acting as a remote
+	if (isRemote && !(Piper->OUT.State == MACH_ST_NOT_READY || Piper->OUT.State == MACH_ST_BOOTING) ){
 		// Get state and substate from main Piper
 		Piper_getState_remote(Piper);
 	
