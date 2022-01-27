@@ -70,6 +70,10 @@ plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
 		Piper_setCommand(Piper);
 		
 	}
+	
+	// Reset unseen Machine CMDs
+	memset( &(Piper->IN.CMD), 0, sizeof(Piper->IN.CMD) );
+	
 	return 0;
 	
 }

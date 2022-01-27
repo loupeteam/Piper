@@ -651,8 +651,6 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 		case MACH_ST_:
 			break;
 	}
-	/* Reset unseen Machine CMDs */
-	memset( &(Piper->IN.CMD), 0, sizeof(Piper->IN.CMD) );
 	
 	
 	return 0;

@@ -31,9 +31,6 @@ plcbit Piper_getState_remote(struct Piper_typ* Piper)
 		Piper->OUT.SubState = Piper->IO.MainInterface.PiperSubState;
 	}
 	
-	// Reset unseen Machine CMDs; here, mostly for BypassAll, as others are generally unused
-	memset( &(Piper->IN.CMD), 0, sizeof(Piper->IN.CMD) );
-	
 	return 0;
 	
 }
