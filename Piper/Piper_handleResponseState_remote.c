@@ -81,6 +81,9 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper)
 			break;
 	}
 	
+	//Propagate commands to main Piper
+	memset(Piper->IO.MainInterface.ModuleCommand, Piper->IN.CMD, sizeof(Piper->IO.MainInterface.ModuleCommand));
+	
 	return 1;
 	
 }

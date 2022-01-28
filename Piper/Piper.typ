@@ -64,6 +64,7 @@ TYPE
 		PiperSubState : DINT;
 		ModuleResponse : MACH_ST_enum;
 		ModuleSubStateRequest : DINT;
+		ModuleCommand : Piper_IN_CMD_typ;
 		ModuleBypass : BOOL;
 		ModuleIsBypassed : BOOL;
 	END_STRUCT;

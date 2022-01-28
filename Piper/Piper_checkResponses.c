@@ -91,6 +91,42 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 				Piper->OUT.SubStateRequestModule = (UDINT)Module;				
 			}
 		}
+		
+		//Check if there are any commands sent by this module
+		if(Module->ModuleCommand.Abort){
+			Piper->IN.CMD.Abort=1;
+		}
+		if(Module->ModuleCommand.AcknowledgeError){
+			Piper->IN.CMD.AcknowledgeError=1;
+		}
+		if(Module->ModuleCommand.BypassAll){
+			Piper->IN.CMD.BypassAll=1;
+		}
+		if(Module->ModuleCommand.Clear){
+			Piper->IN.CMD.Clear=1;
+		}
+		if(Module->ModuleCommand.Hold){
+			Piper->IN.CMD.Hold=1;
+		}
+		if(Module->ModuleCommand.Reset){
+			Piper->IN.CMD.Reset=1;
+		}
+		if(Module->ModuleCommand.Start){
+			Piper->IN.CMD.Start=1;
+		}
+		if(Module->ModuleCommand.Stop){
+			Piper->IN.CMD.Stop=1;
+		}
+		if(Module->ModuleCommand.Suspend){
+			Piper->IN.CMD.Suspend=1;
+		}
+		if(Module->ModuleCommand.Unhold){
+			Piper->IN.CMD.Unhold=1;
+		}
+		if(Module->ModuleCommand.Unsuspend){
+			Piper->IN.CMD.Unsuspend=1;
+		}
+		
 		currentPipe+=1;		
 	}
 	
