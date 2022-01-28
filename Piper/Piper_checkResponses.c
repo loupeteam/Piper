@@ -64,9 +64,14 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 				//Set response status so that Piper doesn't change state
 				Piper->Internal.ResponseStatus  = PIPER_RESPONSE_ST_BUSY;
 
-				//If there is no busy module yet, grab the first one
+				//If there is no busy module yet, grab the first one and set status accordingly
 				if(Piper->OUT.BusyModule == 0){
 					Piper->OUT.BusyModule=	(UDINT)Module;
+			
+					//TODO: do bad things happen here if the character limit of ModuleStatus is exceeded?
+					strcpy(Piper->IO.MainInterface.ModuleStatus, Module->ModuleName);
+					strcat(Piper->IO.MainInterface.ModuleStatus, ": ");
+					strcat(Piper->IO.MainInterface.ModuleStatus, Module->ModuleStatus);
 				}
 			}
 		}
@@ -87,6 +92,11 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 			}
 		}
 		currentPipe+=1;		
+	}
+	
+	if(Piper->OUT.BusyModule == 0){
+		//No busy module, no status
+		strcpy(Piper->IO.MainInterface.ModuleStatus, "");
 	}
 	
 	currentPipe = 0;
