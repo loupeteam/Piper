@@ -78,3 +78,15 @@ FUNCTION Piper_handleResponseState_remote : BOOL (*This function looks at the re
 		Piper : Piper_typ;
 	END_VAR
 END_FUNCTION
+
+FUNCTION Piper_moduleDoneWithState : BOOL
+	VAR_INPUT
+		interface : Module_Interface_typ;
+	END_VAR
+END_FUNCTION
+
+FUNCTION Piper_moduleDoneWithSubstate : BOOL
+	VAR_INPUT
+		interface : Module_Interface_typ;
+	END_VAR
+END_FUNCTION

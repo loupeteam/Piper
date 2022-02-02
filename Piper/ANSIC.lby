@@ -17,6 +17,8 @@
     <File Description="Logs a state change.">PiperLogStateChange.c</File>
     <File Description="Gets state and substate from main Piper">Piper_getState_remote.c</File>
     <File Description="This function looks at the response state and decides what Step or State to request next">Piper_handleResponseState_remote.c</File>
+    <File Description="Determines whether a module has completed the current substate">Piper_moduleDoneWithSubstate.c</File>
+    <File Description="Determines whether a module has completed the current state">Piper_moduleDoneWithState.c</File>
   </Files>
   <Dependencies>
     <Dependency ObjectName="Operator" />
