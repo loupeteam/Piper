@@ -78,6 +78,41 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper)
 			break;
 	}
 	
+	//Reset Machine CMDs that have already been seen
+	if(Piper->IO.iMainInterface.ModuleCommand.Abort){
+		Piper->IN.CMD.Abort = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.AcknowledgeError){
+		Piper->IN.CMD.AcknowledgeError = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.BypassAll){
+		Piper->IN.CMD.BypassAll = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.Clear){
+		Piper->IN.CMD.Clear = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.Hold){
+		Piper->IN.CMD.Hold = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.Reset){
+		Piper->IN.CMD.Reset = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.Start){
+		Piper->IN.CMD.Start = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.Stop){
+		Piper->IN.CMD.Stop = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.Suspend){
+		Piper->IN.CMD.Suspend = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.Unhold){
+		Piper->IN.CMD.Unhold = 0;
+	}
+	if(Piper->IO.iMainInterface.ModuleCommand.Unsuspend){
+		Piper->IN.CMD.Unsuspend = 0;
+	}
+	
 	//Propagate unseen commands to main Piper
 	memset(Piper->IO.oMainInterface.ModuleCommand, Piper->IN.CMD, sizeof(Piper->IO.oMainInterface.ModuleCommand));
 	

@@ -126,6 +126,9 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 		if(Module->ModuleCommand.Unsuspend){
 			Piper->IN.CMD.Unsuspend=1;
 		}
+	
+		// Reset module CMDs
+		memset( &(Module->ModuleCommand), 0, sizeof(Module->ModuleCommand) );
 		
 		currentPipe+=1;		
 	}

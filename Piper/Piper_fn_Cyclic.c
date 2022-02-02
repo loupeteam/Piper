@@ -55,6 +55,8 @@ plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
 		Piper_checkResponses(Piper);
 		Piper_handleResponseState_remote(Piper);
 		
+		//Machine CMDs get reset (conditionally) in handleResponseState_remote
+		
 	} else {
 		
 		//Check responses from Pipers
@@ -68,11 +70,10 @@ plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
 		
 		//Set commands to pipes
 		Piper_setCommand(Piper);
-		
-	}
 	
-	// Reset unseen Machine CMDs
-	memset( &(Piper->IN.CMD), 0, sizeof(Piper->IN.CMD) );
+		//Reset unseen Machine CMDs
+		memset( &(Piper->IN.CMD), 0, sizeof(Piper->IN.CMD) );
+	}
 	
 	return 0;
 	
