@@ -30,11 +30,7 @@ PROGRAM _CYCLIC
 
 
 	//Piper controls the main machine state
-	IF Configuration.piperIsRemote THEN
-		Piper_fn_Cyclic_remote( gMachine, gRemotePiperInterface );
-	ELSE
-		Piper_fn_Cyclic( gMachine );
-	END_IF
+	Piper_fn_Cyclic( gMachine, gIsRemote );
 
 
 	
