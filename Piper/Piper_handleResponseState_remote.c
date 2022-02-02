@@ -37,7 +37,7 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper)
 			if( Piper->OUT.SubState < Piper->Internal.NextSubState ){
 						
 				//Grab the next step
-				Piper->IO.MainInterface.ModuleSubStateRequest = Piper->Internal.NextSubState;
+				Piper->IO.oMainInterface.ModuleSubStateRequest = Piper->Internal.NextSubState;
 
 				//Next step is decided in checkResponses
 				Piper->Internal.NextSubState = 0;
@@ -58,31 +58,28 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper)
 				
 				//We are done with this state
 				Piper->Internal.ResponseStatus = PIPER_RESPONSE_ST_STATE_DONE;
-				Piper->IO.MainInterface.ModuleResponse = Piper->OUT.State;
+				Piper->IO.oMainInterface.ModuleResponse = Piper->OUT.State;
 				
-				Piper->IO.MainInterface.ModuleSubStateRequest = IDLE_SUBSTATE;
+				Piper->IO.oMainInterface.ModuleSubStateRequest = IDLE_SUBSTATE;
 				Piper->Internal.NextSubState =	0;
 
 			}				
 			break;
 		
 		case PIPER_RESPONSE_ST_ERROR:
-		
-			// TODO: will this get reset correctly? optimally?
-			Piper->IO.MainInterface.ModuleResponse = MACH_ST_ERROR;
+			Piper->IO.oMainInterface.ModuleResponse = MACH_ST_ERROR;
 			break;
 
 		case PIPER_RESPONSE_ST_BUSY:
-			// Our substate request is still valid or it got reset by main Piper
-			// Either way, do nothing
+			Piper->IO.oMainInterface.ModuleResponse = 0;
 			break;
 		
 		default:
 			break;
 	}
 	
-	//Propagate commands to main Piper
-	memset(Piper->IO.MainInterface.ModuleCommand, Piper->IN.CMD, sizeof(Piper->IO.MainInterface.ModuleCommand));
+	//Propagate unseen commands to main Piper
+	memset(Piper->IO.oMainInterface.ModuleCommand, Piper->IN.CMD, sizeof(Piper->IO.oMainInterface.ModuleCommand));
 	
 	return 1;
 	

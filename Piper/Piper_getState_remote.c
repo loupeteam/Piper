@@ -25,10 +25,12 @@
 /* Gets state and substate from main Piper */
 plcbit Piper_getState_remote(struct Piper_typ* Piper)
 {
-	if( Piper->IO.MainInterface.PiperState != Piper->OUT.State ){
-		PiperStateChange(Piper, Piper->IO.MainInterface.PiperState);
-	}else if( Piper->IO.MainInterface.PiperSubState != Piper->OUT.SubState ){
-		Piper->OUT.SubState = Piper->IO.MainInterface.PiperSubState;
+	
+	// Set Piper variables based on IO
+	if( Piper->IO.iMainInterface.PiperState != Piper->OUT.State ){
+		PiperStateChange(Piper, Piper->IO.iMainInterface.PiperState);
+	}else if( Piper->IO.iMainInterface.PiperSubState != Piper->OUT.SubState ){
+		Piper->OUT.SubState = Piper->IO.iMainInterface.PiperSubState;
 	}
 	
 	return 0;

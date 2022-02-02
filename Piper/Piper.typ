@@ -38,7 +38,8 @@ TYPE
 		AcknowledgeError : BOOL;
 	END_STRUCT;
 	Piper_IO_typ : 	STRUCT 
-		MainInterface : Module_Interface_typ;
+		iMainInterface : Module_Interface_typ;
+		oMainInterface : Module_Interface_typ;
 	END_STRUCT;
 	Piper_OUT_typ : 	STRUCT 
 		Error : UINT;

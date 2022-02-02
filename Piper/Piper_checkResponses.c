@@ -132,7 +132,7 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 	
 	if(Piper->OUT.BusyModule == 0){
 		//No busy module, no status
-		strcpy(Piper->IO.MainInterface.ModuleStatus, "");
+		strcpy(Piper->IO.oMainInterface.ModuleStatus, "");
 	}
 	
 	currentPipe = 0;
