@@ -151,7 +151,7 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 			//Reset the response to something to other the Error
 //			Module->ModuleResponse= MACH_ST_UNDEFINED; (NOT SURE IF I NEED THIS)
 				
-			//If there is no busy module yet, grab the first one
+			//If there is no error module yet, grab the first one
 			if(Piper->OUT.ErrorModule == 0){
 				Piper->OUT.ErrorModule=	(UDINT)Module;
 			}
