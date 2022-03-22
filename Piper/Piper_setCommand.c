@@ -63,6 +63,12 @@ plcbit Piper_setCommand(struct Piper_typ* Piper)
 				
 	}
 	
+	// Update our oModuleInterface for status reasons
+	Module = &Piper->IO.oMainInterface;
+	//Set the current state
+	Module->PiperState=		Piper->OUT.State;
+	Module->PiperSubState=	Piper->OUT.SubState;
+	
 	return 0;
 
 }
