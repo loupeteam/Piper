@@ -114,7 +114,7 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper)
 	}
 	
 	//Propagate unseen commands to main Piper
-	memset(Piper->IO.oMainInterface.ModuleCommand, Piper->IN.CMD, sizeof(Piper->IO.oMainInterface.ModuleCommand));
+	memcpy(&Piper->IO.oMainInterface.ModuleCommand, &Piper->IN.CMD, sizeof(Piper->IO.oMainInterface.ModuleCommand));
 	
 	return 1;
 	

@@ -30,19 +30,18 @@ plcbit Piper_getState_remote(struct Piper_typ* Piper)
 	if( Piper->IO.iMainInterface.PiperState != Piper->OUT.State ){
 		PiperStateChange(Piper, Piper->IO.iMainInterface.PiperState);
 		// Update output to be consistent with new state
-		memset(&(Piper->IO.oMainInterface), &(Piper->IO.iMainInterface), sizeof(Piper->IO.oMainInterface));
+		memcpy(&Piper->IO.oMainInterface, &Piper->IO.iMainInterface, sizeof(Piper->IO.oMainInterface));
 	}else if( Piper->IO.iMainInterface.PiperSubState != Piper->OUT.SubState ){
 		Piper->OUT.SubState = Piper->IO.iMainInterface.PiperSubState;
 		// Update output to be consistent with new substate
-		memset(&(Piper->IO.oMainInterface), &(Piper->IO.iMainInterface), sizeof(Piper->IO.oMainInterface));
+		memcpy(&Piper->IO.oMainInterface, &Piper->IO.iMainInterface, sizeof(Piper->IO.oMainInterface));
 	}
 	
 	// Always update certain variables
-	memset(&(Piper->IO.oMainInterface.ModuleName), &(Piper->IO.iMainInterface.ModuleName), sizeof(Piper->IO.oMainInterface.ModuleName));
-	memset(&(Piper->IO.oMainInterface.ModuleCommand), &(Piper->IO.iMainInterface.ModuleCommand), sizeof(Piper->IO.oMainInterface.ModuleCommand));
-	memset(&(Piper->IO.oMainInterface.ModuleBypass), &(Piper->IO.iMainInterface.ModuleBypass), sizeof(Piper->IO.oMainInterface.ModuleBypass));
-	memset(&(Piper->IO.oMainInterface.ModuleIsBypassed), &(Piper->IO.iMainInterface.ModuleIsBypassed), sizeof(Piper->IO.oMainInterface.ModuleIsBypassed));
-	
+	memcpy(&Piper->IO.oMainInterface.ModuleName, &Piper->IO.iMainInterface.ModuleName, sizeof(Piper->IO.oMainInterface.ModuleName));
+	memcpy(&Piper->IO.oMainInterface.ModuleCommand, &Piper->IO.iMainInterface.ModuleCommand, sizeof(Piper->IO.oMainInterface.ModuleCommand));
+	memcpy(&Piper->IO.oMainInterface.ModuleBypass, &Piper->IO.iMainInterface.ModuleBypass, sizeof(Piper->IO.oMainInterface.ModuleBypass));
+	memcpy(&Piper->IO.oMainInterface.ModuleIsBypassed, &Piper->IO.iMainInterface.ModuleIsBypassed, sizeof(Piper->IO.oMainInterface.ModuleIsBypassed));
 	
 	return 0;
 	
