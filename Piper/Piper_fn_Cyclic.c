@@ -44,10 +44,11 @@ plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
 			currentPipe++;
 		}
 	}
-	//If we're remote, wait for booting to finish (for both PLCs) before actually acting as a remote
-	if (isRemote && 
-		!(Piper->OUT.State == MACH_ST_NOT_READY || Piper->OUT.State == MACH_ST_BOOTING)&& 
-		!(Piper->IO.iMainInterface.PiperState == MACH_ST_NOT_READY || Piper->IO.iMainInterface.PiperState == MACH_ST_BOOTING) ){
+	BOOL bootAtDifferentTimes = (Piper->OUT.State == MACH_ST_NOT_READY || Piper->OUT.State == MACH_ST_BOOTING) != (Piper->IO.iMainInterface.PiperState == MACH_ST_NOT_READY || Piper->IO.iMainInterface.PiperState == MACH_ST_BOOTING)
+	//If we're remote, act as a remote unless we booted first OR main booted first
+	//If both boot at the same time, bootAtDifferentTimes will become True on the cycle that main leaves booting
+	//Remote will leave booting during that cycle where it's acting as a main, so it should be fine, just weird.
+	if (isRemote && !bootAtDifferentTimes){
 		
 		//Send state and substate from main Piper to local modules
 		Piper_getState_remote(Piper);
