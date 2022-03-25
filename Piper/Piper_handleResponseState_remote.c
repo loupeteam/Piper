@@ -60,7 +60,7 @@ plcbit Piper_handleResponseState_remote(struct Piper_typ* Piper)
 				Piper->Internal.ResponseStatus = PIPER_RESPONSE_ST_STATE_DONE;
 				Piper->IO.oMainInterface.ModuleResponse = Piper->OUT.State;
 				
-				Piper->IO.oMainInterface.ModuleSubStateRequest = IDLE_SUBSTATE;
+				Piper->IO.oMainInterface.ModuleSubStateRequest = 0;
 				Piper->Internal.NextSubState =	0;
 
 			}				
