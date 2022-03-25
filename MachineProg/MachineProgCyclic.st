@@ -22,8 +22,9 @@
 (********************************************************************)
 
 PROGRAM _INIT
-
-
+	
+	gIsRemote := Configuration.remotePLC;
+	
 END_PROGRAM
 
 PROGRAM _CYCLIC

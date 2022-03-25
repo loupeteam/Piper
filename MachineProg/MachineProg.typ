@@ -11,6 +11,6 @@
 
 TYPE
 	Configuration_typ : 	STRUCT 
-		piperIsRemote : BOOL;
+		remotePLC : BOOL;
 	END_STRUCT;
 END_TYPE
