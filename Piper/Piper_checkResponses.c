@@ -25,6 +25,7 @@
 plcbit Piper_checkResponses(struct Piper_typ* Piper)
 {	
 	struct Module_Interface_typ * Module;
+	StrExtArgs_typ LogData;
 	
 	int currentPipe = 0;
 	
