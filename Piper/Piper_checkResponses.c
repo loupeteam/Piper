@@ -90,36 +90,58 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 		//Check if there are any commands sent by this module
 		if(Module->ModuleCommand.Abort){
 			Piper->IN.CMD.Abort=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested an abort by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.AcknowledgeError){
 			Piper->IN.CMD.AcknowledgeError=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested an acknowledge error by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.BypassAll){
 			Piper->IN.CMD.BypassAll=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested a bypass all by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.Clear){
 			Piper->IN.CMD.Clear=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested a clear by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.Hold){
 			Piper->IN.CMD.Hold=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested a hold by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.Reset){
 			Piper->IN.CMD.Reset=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested a reset by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.Start){
 			Piper->IN.CMD.Start=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested a start by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.Stop){
 			Piper->IN.CMD.Stop=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested a stop by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.Suspend){
 			Piper->IN.CMD.Suspend=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested a suspend by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.Unhold){
 			Piper->IN.CMD.Unhold=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested an unhold by interface command",(UDINT)&LogData);
 		}
 		if(Module->ModuleCommand.Unsuspend){
 			Piper->IN.CMD.Unsuspend=1;
+			LogData.s[0] =  (UDINT)&(Module->ModuleName);
+			logInfo(Piper->IN.CFG.LoggerName,0,"%s requested an unsuspend by interface command",(UDINT)&LogData);
 		}
 	
 		// Reset module CMDs
