@@ -29,7 +29,7 @@ END_FUNCTION_BLOCK
 Internal Piper Functions
 *)
 
-FUNCTION Piper_changeState : BOOL (*Logs a state change.*) (*$GROUP=User*)
+FUNCTION Piper_changeState : BOOL (*Performs and logs a state change*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
 		State : MACH_ST_enum;
@@ -82,13 +82,13 @@ FUNCTION PackMLStateString : BOOL (*Returns a string for the given PackML state*
 	END_VAR
 END_FUNCTION
 
-FUNCTION PiperModuleDoneWithState : BOOL
+FUNCTION PiperModuleDoneWithState : BOOL (*Returns whether the given module is done with its current state*)
 	VAR_INPUT
 		ModuleInterface : Module_Interface_typ;
 	END_VAR
 END_FUNCTION
 
-FUNCTION PiperModuleDoneWithSubstate : BOOL
+FUNCTION PiperModuleDoneWithSubstate : BOOL (*Returns whether the given module is done with its current substate*)
 	VAR_INPUT
 		ModuleInterface : Module_Interface_typ;
 	END_VAR
