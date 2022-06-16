@@ -33,7 +33,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 		case MACH_ST_NOT_READY:
 			
 			logInfo(Piper->IN.CFG.LoggerName,0,"Boot",0);
-			PiperStateChange(Piper,MACH_ST_BOOTING);
+			Piper_changeState(Piper,MACH_ST_BOOTING);
 
 			break;
 		
@@ -48,7 +48,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 				
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 					
-				PiperStateChange(Piper,MACH_ST_BOOTED);
+				Piper_changeState(Piper,MACH_ST_BOOTED);
 			
 			}
 		
@@ -60,7 +60,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 			
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 			
 			}
 		
@@ -76,7 +76,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 				
-				PiperStateChange(Piper,MACH_ST_STOPPED);
+				Piper_changeState(Piper,MACH_ST_STOPPED);
 			
 			}
 		
@@ -88,7 +88,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   				
 				logInfo(Piper->IN.CFG.LoggerName,0,"Abort Command",0);
 			
-				PiperStateChange(Piper,MACH_ST_ABORTING);		
+				Piper_changeState(Piper,MACH_ST_ABORTING);		
 		
 			}
 		
@@ -108,7 +108,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 				
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 				
-				PiperStateChange(Piper,MACH_ST_STOPPED);
+				Piper_changeState(Piper,MACH_ST_STOPPED);
 				
 			}
 		
@@ -120,7 +120,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   				
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 			
-				PiperStateChange(Piper,MACH_ST_ABORTING);		
+				Piper_changeState(Piper,MACH_ST_ABORTING);		
 		
 			}
 		
@@ -136,14 +136,14 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 				
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 				
 			}	
 			else if( Piper->IN.CMD.Reset ){
   							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Reset",0);
 
-				PiperStateChange(Piper,MACH_ST_RESETTING);
+				Piper_changeState(Piper,MACH_ST_RESETTING);
 				
 			}
 		
@@ -163,7 +163,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 								
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 
-				PiperStateChange(Piper,MACH_ST_IDLE);				
+				Piper_changeState(Piper,MACH_ST_IDLE);				
 			
 			}
 	
@@ -175,14 +175,14 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 			
-				PiperStateChange(Piper,MACH_ST_ABORTING);	
+				Piper_changeState(Piper,MACH_ST_ABORTING);	
 
 			}
 			else if( Piper->IN.CMD.Stop ){
   							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
   						
-				PiperStateChange(Piper,MACH_ST_STOPPING);			
+				Piper_changeState(Piper,MACH_ST_STOPPING);			
 
 			}
 			break;
@@ -197,21 +197,21 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 				
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 				
 			}
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 
 			}
 			else if( Piper->IN.CMD.Start ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Start",0);
 
-				PiperStateChange(Piper,MACH_ST_STARTING);			
+				Piper_changeState(Piper,MACH_ST_STARTING);			
 			}
 						
 			break;
@@ -230,7 +230,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 								
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 
-				PiperStateChange(Piper,MACH_ST_EXECUTE);			
+				Piper_changeState(Piper,MACH_ST_EXECUTE);			
 
 			}
 
@@ -243,14 +243,14 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 			
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 			
 			}
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);			
+				Piper_changeState(Piper,MACH_ST_STOPPING);			
 			
 			}
 		
@@ -267,7 +267,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 								
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 
-				PiperStateChange(Piper,MACH_ST_COMPLETING);			
+				Piper_changeState(Piper,MACH_ST_COMPLETING);			
 
 			}
 		
@@ -279,28 +279,28 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 			
 			}
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 
 			}
 			else if( Piper->IN.CMD.Hold ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Hold",0);
   			
-				PiperStateChange(Piper,MACH_ST_HOLDING);
+				Piper_changeState(Piper,MACH_ST_HOLDING);
 
 			}
 			else if( Piper->IN.CMD.Suspend ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Suspend",0);
   			
-				PiperStateChange(Piper,MACH_ST_SUSPENDING);
+				Piper_changeState(Piper,MACH_ST_SUSPENDING);
 			
 			}	
 
@@ -316,7 +316,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 									
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 
-				PiperStateChange(Piper,MACH_ST_COMPLETE);
+				Piper_changeState(Piper,MACH_ST_COMPLETE);
 			
 			}
 
@@ -328,7 +328,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);	
+				Piper_changeState(Piper,MACH_ST_ABORTING);	
 			
 
 			}
@@ -336,7 +336,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 			
 			}
 	
@@ -352,7 +352,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 				
 				
 			}
@@ -360,14 +360,14 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 				
 			}
 			else if( Piper->IN.CMD.Reset ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Reset",0);
   			
-				PiperStateChange(Piper,MACH_ST_RESETTING);
+				Piper_changeState(Piper,MACH_ST_RESETTING);
 			
 			}
 
@@ -388,7 +388,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 								
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 
-				PiperStateChange(Piper,MACH_ST_HELD);
+				Piper_changeState(Piper,MACH_ST_HELD);
 			
 			}
 
@@ -400,14 +400,14 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   			
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 
 			}	
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 			
 			}
 	
@@ -423,21 +423,21 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 				
 			}
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 
 			}
 			else if( Piper->IN.CMD.Unhold ){
   			  			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Unhold",0);
 				
-				PiperStateChange(Piper,MACH_ST_UNHOLDING);
+				Piper_changeState(Piper,MACH_ST_UNHOLDING);
 			
 			}
 	
@@ -449,7 +449,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 								
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 	
-				PiperStateChange(Piper,MACH_ST_EXECUTE);
+				Piper_changeState(Piper,MACH_ST_EXECUTE);
 			
 			}
 		
@@ -461,14 +461,14 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);		
+				Piper_changeState(Piper,MACH_ST_ABORTING);		
 			
 			}		
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 			
 			}
 	
@@ -484,7 +484,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 								
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 
-				PiperStateChange(Piper,MACH_ST_SUSPENDED);
+				Piper_changeState(Piper,MACH_ST_SUSPENDED);
 			
 			}
 
@@ -497,13 +497,13 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);		
+				Piper_changeState(Piper,MACH_ST_ABORTING);		
 			}		
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 			
 			}
 	
@@ -519,20 +519,20 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 				
 			}
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 			}
 			else if( Piper->IN.CMD.Unsuspend ){
   			  			  			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Unsuspend",0);
 
-				PiperStateChange(Piper,MACH_ST_UNSUSPENDING);
+				Piper_changeState(Piper,MACH_ST_UNSUSPENDING);
 			
 			}
 	
@@ -548,7 +548,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 									
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 
-				PiperStateChange(Piper,MACH_ST_EXECUTE);
+				Piper_changeState(Piper,MACH_ST_EXECUTE);
 			
 			}
 
@@ -560,14 +560,14 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper,MACH_ST_ABORTING);
 			
 			}
 			else if( Piper->IN.CMD.Stop ){
   			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Stop",0);
 
-				PiperStateChange(Piper,MACH_ST_STOPPING);
+				Piper_changeState(Piper,MACH_ST_STOPPING);
 			
 			}
 	
@@ -587,7 +587,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 					
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTED);				
+				Piper_changeState(Piper,MACH_ST_ABORTED);				
 			
 			}
 
@@ -610,7 +610,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   			  			  			  							
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Clear",0);
   			
-				PiperStateChange(Piper,MACH_ST_CLEARING);			
+				Piper_changeState(Piper,MACH_ST_CLEARING);			
 
 			}			
 
@@ -622,7 +622,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 					
 			if( Piper->Internal.ResponseStatus == PIPER_RESPONSE_ST_STATE_DONE ){
 				
-			PiperStateChange(Piper,MACH_ST_STOPPED);			
+			Piper_changeState(Piper,MACH_ST_STOPPED);			
 
 			}
 	
@@ -634,7 +634,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
   		
 				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 
-				PiperStateChange(Piper,MACH_ST_ABORTING);			
+				Piper_changeState(Piper,MACH_ST_ABORTING);			
 			
 			}
 		

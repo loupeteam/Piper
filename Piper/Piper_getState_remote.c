@@ -28,7 +28,7 @@ plcbit Piper_getState_remote(struct Piper_typ* Piper)
 	
 	// Set Piper variables based on IO
 	if( Piper->IO.iMainInterface.PiperState != Piper->OUT.State ){
-		PiperStateChange(Piper, Piper->IO.iMainInterface.PiperState);
+		Piper_changeState(Piper, Piper->IO.iMainInterface.PiperState);
 		// Update output to be consistent with new state
 		memcpy(&Piper->IO.oMainInterface, &Piper->IO.iMainInterface, sizeof(Piper->IO.oMainInterface));
 	}else if( Piper->IO.iMainInterface.PiperSubState != Piper->OUT.SubState ){

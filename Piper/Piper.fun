@@ -60,7 +60,7 @@ FUNCTION PackMLStateString : BOOL (*Returns a string for the given PackML state*
 	END_VAR
 END_FUNCTION
 
-FUNCTION PiperStateChange : BOOL (*Logs a state change.*) (*$GROUP=User*)
+FUNCTION Piper_changeState : BOOL (*Logs a state change.*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
 		State : MACH_ST_enum;
@@ -79,13 +79,13 @@ FUNCTION Piper_handleResponseState_remote : BOOL (*This function looks at the re
 	END_VAR
 END_FUNCTION
 
-FUNCTION Piper_moduleDoneWithState : BOOL
+FUNCTION PiperModuleDoneWithState : BOOL
 	VAR_INPUT
 		interface : Module_Interface_typ;
 	END_VAR
 END_FUNCTION
 
-FUNCTION Piper_moduleDoneWithSubstate : BOOL
+FUNCTION PiperModuleDoneWithSubstate : BOOL
 	VAR_INPUT
 		interface : Module_Interface_typ;
 	END_VAR
