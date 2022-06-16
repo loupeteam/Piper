@@ -12,7 +12,7 @@
 FUNCTION Piper_fn_Cyclic : BOOL (*Master Cyclic function*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
-		isRemote : BOOL;
+		IsRemote : BOOL;
 	END_VAR
 END_FUNCTION
 
@@ -81,12 +81,12 @@ END_FUNCTION
 
 FUNCTION PiperModuleDoneWithState : BOOL
 	VAR_INPUT
-		interface : Module_Interface_typ;
+		ModuleInterface : Module_Interface_typ;
 	END_VAR
 END_FUNCTION
 
 FUNCTION PiperModuleDoneWithSubstate : BOOL
 	VAR_INPUT
-		interface : Module_Interface_typ;
+		ModuleInterface : Module_Interface_typ;
 	END_VAR
 END_FUNCTION

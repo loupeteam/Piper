@@ -24,7 +24,7 @@
 #include <string.h>
 
 /* Master Cyclic function */
-plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
+plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL IsRemote)
 {
 	
 	if( Piper == 0 ){
@@ -48,7 +48,7 @@ plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL isRemote)
 	//If we're remote, act as a remote unless we booted first OR main booted first
 	//If both boot at the same time, bootAtDifferentTimes will become True on the cycle that main leaves booting
 	//Remote will leave booting during that cycle where it's acting as a main, so it should be fine, just weird.
-	if (isRemote && !bootAtDifferentTimes){
+	if (IsRemote && !bootAtDifferentTimes){
 		
 		//Send state and substate from main Piper to local modules
 		Piper_getState_remote(Piper);
