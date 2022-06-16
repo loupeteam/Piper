@@ -23,6 +23,6 @@
 
 plcbit PiperModuleDoneWithState(Module_Interface_typ *ModuleInterface) {
 	return ModuleInterface->ModuleIsBypassed 
-		|| ModuleInterface->ModuleResponse == ModuleInterface->PiperState 
-		|| ModuleInterface->ModuleResponse == MACH_ST_ERROR;
+		|| (ModuleInterface->ModuleResponse == ModuleInterface->PiperState)
+		|| (ModuleInterface->ModuleResponse == MACH_ST_ERROR);
 }

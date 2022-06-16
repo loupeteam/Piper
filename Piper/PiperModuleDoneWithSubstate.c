@@ -23,5 +23,5 @@
 
 plcbit PiperModuleDoneWithSubstate(Module_Interface_typ *ModuleInterface) {
 	return PiperModuleDoneWithState(ModuleInterface)
-		|| ModuleInterface->ModuleSubStateRequest > ModuleInterface->PiperSubState;
+		|| (ModuleInterface->ModuleSubStateRequest > ModuleInterface->PiperSubState);
 }

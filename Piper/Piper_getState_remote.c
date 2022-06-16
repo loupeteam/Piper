@@ -22,16 +22,16 @@
 	};
 #endif
 
-/* Gets state and substate from main Piper */
-plcbit Piper_getState_remote(struct Piper_typ* Piper)
-{
+// Gets state and substate from main Piper
+plcbit Piper_getState_remote(struct Piper_typ* Piper) {
 	
 	// Set Piper variables based on IO
-	if( Piper->IO.iMainInterface.PiperState != Piper->OUT.State ){
+	if (Piper->IO.iMainInterface.PiperState != Piper->OUT.State) {
 		Piper_changeState(Piper, Piper->IO.iMainInterface.PiperState);
 		// Update output to be consistent with new state
 		memcpy(&Piper->IO.oMainInterface, &Piper->IO.iMainInterface, sizeof(Piper->IO.oMainInterface));
-	}else if( Piper->IO.iMainInterface.PiperSubState != Piper->OUT.SubState ){
+	}
+	else if (Piper->IO.iMainInterface.PiperSubState != Piper->OUT.SubState) {
 		Piper->OUT.SubState = Piper->IO.iMainInterface.PiperSubState;
 		// Update output to be consistent with new substate
 		memcpy(&Piper->IO.oMainInterface, &Piper->IO.iMainInterface, sizeof(Piper->IO.oMainInterface));
@@ -44,5 +44,4 @@ plcbit Piper_getState_remote(struct Piper_typ* Piper)
 	memcpy(&Piper->IO.oMainInterface.ModuleIsBypassed, &Piper->IO.iMainInterface.ModuleIsBypassed, sizeof(Piper->IO.oMainInterface.ModuleIsBypassed));
 	
 	return 0;
-	
 }
