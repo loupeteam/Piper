@@ -413,22 +413,22 @@ plcbit Piper_PackML(struct Piper_typ* Piper) {
 			// Check for State Complete
 			if (Piper->Internal.ResponseStatus == PIPER_RESPONSE_ST_STATE_DONE) {
 				logInfo(Piper->IN.CFG.LoggerName, 0, "State completed", 0);
-				PiperStateChange(Piper, MACH_ST_STOPPING);
+				Piper_changeState(Piper, MACH_ST_STOPPING);
 			}
 			
 			// Check for machine CMDs
 			if (Piper->IN.CMD.Abort) {
 				logInfo(Piper->IN.CFG.LoggerName, 0, "Command Abort", 0);
-				PiperStateChange(Piper,MACH_ST_ABORTING);
+				Piper_changeState(Piper, MACH_ST_ABORTING);
 			}
 			else if (Piper->IN.CMD.Stop) {
 				logInfo(Piper->IN.CFG.LoggerName, 0, "Command Stop", 0);
-				PiperStateChange(Piper, MACH_ST_STOPPING);
+				Piper_changeState(Piper, MACH_ST_STOPPING);
 			}
 			
 			break;
 		
-		//Remove warnings. These aren't actual states but they are used for communications.
+		// Remove warnings. These aren't actual states but they are used for communications.
 		case MACH_ST_ERROR:
 		case MACH_ST_:
 			break;

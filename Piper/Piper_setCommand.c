@@ -30,7 +30,7 @@ plcbit Piper_setCommand(struct Piper_typ* Piper) {
 	
 	while (currentPipe <= MAI_PIPER_MODULES && Piper->Internal.ModuleList[currentPipe] != 0) {
 		// Get the pipe at current index
-		Module = Module_Interface_typ *)(Piper->Internal.ModuleList[currentPipe]);
+		Module = (Module_Interface_typ *)(Piper->Internal.ModuleList[currentPipe]);
 		
 		if (!Module->ModuleBypass) {
 			
