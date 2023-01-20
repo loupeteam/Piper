@@ -42,6 +42,8 @@ TYPE
 		State : MACH_ST_enum; (*The current PackML state of system*)
 		SubState : DINT; (*The current step within the PackML state*)
 		BusyModule : UDINT; (*The first module that is busy*)
+		BusyModuleList : ARRAY[0..MAI_PIPER_MODULES]OF UDINT;
+		NumBusyModules : DINT;
 		ErrorModule : UDINT; (*The first module that has an error*)
 		SubStateRequestModule : UDINT; (*The module that requested the next step*)
 	END_STRUCT;

@@ -30,12 +30,15 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 	
 	Piper->OUT.BusyModule=	0;
 	Piper->OUT.ErrorModule= 0;
+	Piper->OUT.NumBusyModules= 0;
 	Piper->OUT.SubStateRequestModule= 0;
 	Piper->Internal.NextSubState= 0;
 	
 	//Initialize to finished. Will get reset if not
 	Piper->Internal.ResponseStatus = PIPER_RESPONSE_ST_STEP_DONE;
 	
+	//Clear Busy Module Array
+	memset(Piper->OUT.BusyModuleList,0,sizeof(Piper->OUT.BusyModuleList));
 	
 	//Handle special booting case. We stay in booting for a minimum number of cycles.
 	if( Piper->OUT.State == MACH_ST_BOOTING )
@@ -63,6 +66,10 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper)
 
 				//Set response status so that Piper doesn't change state
 				Piper->Internal.ResponseStatus  = PIPER_RESPONSE_ST_BUSY;
+				
+				//Record all busy modules in an array
+				Piper->OUT.BusyModuleList[Piper->OUT.NumBusyModules] = (UDINT)Module;
+				Piper->OUT.NumBusyModules+=1;
 
 				//If there is no busy module yet, grab the first one
 				if(Piper->OUT.BusyModule == 0){
