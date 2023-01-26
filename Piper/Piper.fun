@@ -66,11 +66,11 @@ FUNCTION PiperStateChange : BOOL (*Logs a state change.*) (*$GROUP=User*)
 	END_VAR
 END_FUNCTION
 
-FUNCTION Piper_getBusyModuleList : BOOL (*This function finds modules reporting busy to Piper*)
+FUNCTION Piper_getBusyModules : BOOL (*This function finds modules reporting busy to Piper*)
 	VAR_INPUT
 		Piper : Piper_typ;
-		moduleArray : UDINT;
-		arraySize : UDINT;
-		offset : UDINT;
+		pModuleArray : UINT;
+		numModules : UINT;
+		offset : UINT;
 	END_VAR
 END_FUNCTION

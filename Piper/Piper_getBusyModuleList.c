@@ -22,41 +22,39 @@
 #endif
 
 /* Reads pipes with a busy status */
-plcbit Piper_getBusyModuleList(Piper_typ* Piper, UDINT pModuleArray, UDINT arraySize, UDINT offset)
+UINT Piper_getBusyModules(Piper_typ* Piper, UDINT pModuleArray, UINT numModules, UINT offset)
 {	
 	Module_Interface_typ * Module;
 	Module_Interface_typ * moduleArray = (Module_Interface_typ *) pModuleArray;
 	
-	int currentPipe = 0;
-	int offsetCounter = 0;
-	int busyModuleIndex = 0;
+	UINT moduleIndex = 0;
+	UINT numBusyModules = 0;
 	
 	//Clear Busy Module Array
-	memset(moduleArray,0,sizeof(moduleArray[0])*arraySize);
+	memset(moduleArray,0,sizeof(moduleArray[0])*numModules);
 
 	//Go through all the modules
-	while ( currentPipe <= MAI_PIPER_MODULES && Piper->Internal.ModuleList[currentPipe] != 0)
+	while ( moduleIndex <= MAI_PIPER_MODULES && Piper->Internal.ModuleList[moduleIndex] != 0)
 	{
 		//Get the pipe at current index
-		Module = (Module_Interface_typ *)(Piper->Internal.ModuleList[currentPipe]);
+		Module = (Module_Interface_typ *)(Piper->Internal.ModuleList[moduleIndex]);
 		
 		//Check if the Pipe should respond in the current step And if any pipe from this step is not done
-		if(Module->ModuleSubStateRequest <= Piper->OUT.SubState
-		&& !Module->ModuleBypass
-		&& Piper->OUT.State != Module->ModuleResponse
-		&& busyModuleIndex < arraySize){
+		if(!Module->ModuleBypass
+		&& Piper->OUT.State != Module->ModuleResponse){
 			
-			if (offsetCounter >= offset){
+			
+			if (numBusyModules >= offset
+				&& numBusyModules - offset < numModules){
 				// Copy the entire module to the next available moduleArray index
-				memcpy(&moduleArray[busyModuleIndex],Module,sizeof(moduleArray[0]));
-				busyModuleIndex+=1;
+				memcpy(&moduleArray[numBusyModules-offset],Module,sizeof(moduleArray[0]));
 			}
 			
-			offsetCounter+=1;
+			numBusyModules+=1;
 		}
 		
-		currentPipe+=1;
+		moduleIndex+=1;
 	}
 		
-	return 0;
+	return numBusyModules;
 }
