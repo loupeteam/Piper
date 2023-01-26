@@ -1,3 +1,5 @@
+0.1.9 - Add Piper_getBusyModuleList to report several busy modules at once
+
 0.1.8 - Update dependencies
 
 0.1.7 - Add Boot cycles to CFG
