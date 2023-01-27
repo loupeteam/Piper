@@ -93,3 +93,12 @@ FUNCTION PiperModuleDoneWithSubstate : BOOL (*Returns whether the given module i
 		ModuleInterface : Module_Interface_typ;
 	END_VAR
 END_FUNCTION
+
+FUNCTION Piper_getBusyModules : UINT (*This function finds modules reporting busy to Piper*)
+	VAR_INPUT
+		Piper : Piper_typ;
+		pModuleArray : UDINT;
+		numModules : UINT;
+		offset : UINT;
+	END_VAR
+END_FUNCTION
