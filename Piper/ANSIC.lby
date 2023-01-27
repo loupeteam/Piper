@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio FileVersion="4.9"?>
-<Library Version="0.01.8" SubType="ANSIC" Description="A new source library" xmlns="http://br-automation.co.at/AS/Library">
+<?AutomationStudio Version=4.5.5.113 SP?>
+<Library Version="0.01.9" SubType="ANSIC" Description="A new source library" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File>VersionHistory.txt</File>
     <File Description="Exported data types">Piper.typ</File>
@@ -15,6 +15,7 @@
     <File Description="Implements the interface to a pipe">Piper_Module_Fub.c</File>
     <File Description="Returns a string for the given PackML state">PackMLStateString.c</File>
     <File Description="Logs a state change.">PiperLogStateChange.c</File>
+    <File Description="Reads all busy piper modules">Piper_getBusyModules.c</File>
   </Files>
   <Dependencies>
     <Dependency ObjectName="Operator" />
