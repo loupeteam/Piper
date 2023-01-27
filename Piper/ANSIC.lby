@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.5.5.113 SP?>
-<Library Version="0.01.8" SubType="ANSIC" Description="A new source library" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="0.01.9" SubType="ANSIC" Description="A new source library" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File>VersionHistory.txt</File>
     <File Description="Exported data types">Piper.typ</File>
