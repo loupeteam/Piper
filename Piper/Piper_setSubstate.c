@@ -22,15 +22,13 @@
 	};
 #endif
 
-// Gets state and substate from main Piper
-plcbit Piper_getState_remote(struct Piper_typ* Piper) {
-	
-	// Set Piper variables based on IO
-	if (Piper->IO.iMainInterface.PiperState != Piper->OUT.State) {
-		Piper_changeState(Piper, Piper->IO.iMainInterface.PiperState);
+// Sets the substate given the current internal response status
+plcbit Piper_setSubstate(struct Piper_typ* Piper) {
+	if (Piper->Internal.ResponseStatus == PIPER_RESPONSE_ST_NEXT_STEP) {
+		Piper->OUT.SubState = Piper->Internal.NextSubState;
 	}
-	else if (Piper->IO.iMainInterface.PiperSubState != Piper->OUT.SubState) {
-		Piper->OUT.SubState = Piper->IO.iMainInterface.PiperSubState;
+	else if (Piper->Internal.ResponseStatus == PIPER_RESPONSE_ST_STATE_DONE) {
+		Piper->OUT.SubState = IDLE_SUBSTATE;
 	}
 	
 	return 0;
