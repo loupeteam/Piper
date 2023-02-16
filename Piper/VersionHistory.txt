@@ -1,4 +1,5 @@
 0.1.9 - Add Piper_getBusyModules to display several busy modules at once
+      - Prevent abort commands while in BOOTING and BOOTED
 
 0.1.8 - Update dependencies
 
