@@ -12,6 +12,7 @@
 FUNCTION Piper_fn_Cyclic : BOOL (*Master Cyclic function*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
+		IsRemote : BOOL;
 	END_VAR
 END_FUNCTION
 
@@ -25,16 +26,23 @@ FUNCTION_BLOCK Piper_Module_Fub (*Implements the interface to a pipe*) (*$GROUP=
 	END_VAR
 END_FUNCTION_BLOCK
 (*
-Internal Functions
+Internal Piper Functions
 *)
 
-FUNCTION Piper_setCommand : BOOL (*Sets commands to the subsystems*) (*$GROUP=User*)
+FUNCTION Piper_changeState : BOOL (*Performs and logs a state change*) (*$GROUP=User*)
+	VAR_INPUT
+		Piper : Piper_typ;
+		State : MACH_ST_enum;
+	END_VAR
+END_FUNCTION
+
+FUNCTION Piper_checkResponses : BOOL (*Reads the status of Pipes*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
 	END_VAR
 END_FUNCTION
 
-FUNCTION Piper_checkResponses : BOOL (*Reads the status of Pipes*) (*$GROUP=User*)
+FUNCTION Piper_getState_remote : BOOL (*Gets state and substate from main Piper*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
 	END_VAR
@@ -46,11 +54,26 @@ FUNCTION Piper_handleResponseState : BOOL (*This function looks at the response 
 	END_VAR
 END_FUNCTION
 
+FUNCTION Piper_handleResponseState_remote : BOOL (*This function looks at the response state and decides what Step or State to request next*) (*$GROUP=User*)
+	VAR_INPUT
+		Piper : Piper_typ;
+	END_VAR
+END_FUNCTION
+
 FUNCTION Piper_PackML : BOOL (*Implements PackML state machine for Piper*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
 	END_VAR
 END_FUNCTION
+
+FUNCTION Piper_setCommand : BOOL (*Sets commands to the subsystems*) (*$GROUP=User*)
+	VAR_INPUT
+		Piper : Piper_typ;
+	END_VAR
+END_FUNCTION
+(*
+Internal Helper Functions
+*)
 
 FUNCTION PackMLStateString : BOOL (*Returns a string for the given PackML state*) (*$GROUP=User*)
 	VAR_INPUT
@@ -59,10 +82,15 @@ FUNCTION PackMLStateString : BOOL (*Returns a string for the given PackML state*
 	END_VAR
 END_FUNCTION
 
-FUNCTION PiperStateChange : BOOL (*Logs a state change.*) (*$GROUP=User*)
+FUNCTION PiperModuleDoneWithState : BOOL (*Returns whether the given module is done with its current state*)
 	VAR_INPUT
-		Piper : Piper_typ;
-		State : MACH_ST_enum;
+		ModuleInterface : Module_Interface_typ;
+	END_VAR
+END_FUNCTION
+
+FUNCTION PiperModuleDoneWithSubstate : BOOL (*Returns whether the given module is done with its current substate*)
+	VAR_INPUT
+		ModuleInterface : Module_Interface_typ;
 	END_VAR
 END_FUNCTION
 

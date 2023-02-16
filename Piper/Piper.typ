@@ -14,6 +14,7 @@ TYPE
 		IN : Piper_IN_typ;
 		OUT : Piper_OUT_typ;
 		Internal : Piper_Internal_typ;
+		IO : Piper_IO_typ;
 	END_STRUCT;
 	Piper_IN_typ : 	STRUCT 
 		CMD : Piper_IN_CMD_typ;
@@ -35,6 +36,10 @@ TYPE
 		Clear : BOOL;
 		BypassAll : BOOL;
 		AcknowledgeError : BOOL;
+	END_STRUCT;
+	Piper_IO_typ : 	STRUCT 
+		iMainInterface : Module_Interface_typ;
+		oMainInterface : Module_Interface_typ;
 	END_STRUCT;
 	Piper_OUT_typ : 	STRUCT 
 		Error : UINT;
@@ -60,6 +65,7 @@ TYPE
 		PiperSubState : DINT;
 		ModuleResponse : MACH_ST_enum;
 		ModuleSubStateRequest : DINT;
+		ModuleCommand : Piper_IN_CMD_typ;
 		ModuleBypass : BOOL;
 		ModuleIsBypassed : BOOL;
 	END_STRUCT;

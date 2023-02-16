@@ -9,14 +9,16 @@
  * Local variables of program MachineProg
  ********************************************************************)
 VAR
-	StatusModule : Module_Interface_typ;
-	Module : REFERENCE TO Module_Interface_typ;
-	TON_0 : TON;
-	StateString : STRING[80];
-END_VAR
-VAR RETAIN
-	ByPassAll : BOOL := 0;
-END_VAR
-VAR
-	Configuration : Configuration_typ;
+	powerLinkConnectedRTrig : R_TRIG;
+	powerLinkConnectedFTrig : F_TRIG;
+	iNetworkConnected : BOOL;
+	remoteModule : Piper_Module_Fub;
+	remoteModuleInterface : Module_Interface_typ;
+	SIZEOF_MODULE_MAIN : UDINT;
+	SIZEOF_MODULE_REMOTE : UDINT;
+	ioSizeVerfied : BOOL;
+	iModuleInterface : ARRAY[0..195] OF USINT;
+	oModuleInterface : ARRAY[0..195] OF USINT;
+	remoteModuleErrorAck : BOOL;
+	remoteModuleError : BOOL;
 END_VAR
