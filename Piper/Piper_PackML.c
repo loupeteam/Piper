@@ -51,19 +51,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 				PiperStateChange(Piper,MACH_ST_BOOTED);
 			
 			}
-		
-			/****************************/
-			/* Check for machine CMDs	*/
-			/****************************/
-		
-			if( Piper->IN.CMD.Abort ){
-
-				logInfo(Piper->IN.CFG.LoggerName,0,"Command Abort",0);
 			
-				PiperStateChange(Piper,MACH_ST_ABORTING);
-			
-			}
-		
 			break;
 		
 		case MACH_ST_BOOTED:
@@ -78,17 +66,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper)
 				
 				PiperStateChange(Piper,MACH_ST_STOPPED);
 			
-			}
-		
-			/****************************/
-			/* Check for machine CMDs	*/
-			/****************************/
-		
-			if( Piper->IN.CMD.Abort ){
-  				
-				logInfo(Piper->IN.CFG.LoggerName,0,"Abort Command",0);
-			
-				PiperStateChange(Piper,MACH_ST_ABORTING);		
+
 		
 			}
 		
