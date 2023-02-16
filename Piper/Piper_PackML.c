@@ -37,34 +37,34 @@ plcbit Piper_PackML(struct Piper_typ* Piper) {
 		
 		case MACH_ST_BOOTING:
 			
-			// Check for State Complete
-			if (Piper->Internal.ResponseStatus == PIPER_RESPONSE_ST_STATE_DONE) {
-				logInfo(Piper->IN.CFG.LoggerName, 0, "State completed", 0);
-				Piper_changeState(Piper, MACH_ST_BOOTED);
-			}
+			/****************************/
+			/* Check for State Complete	*/
+			/****************************/
+
+			if( Piper->Internal.ResponseStatus == PIPER_RESPONSE_ST_STATE_DONE ){
+				
+				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
+					
+				PiperStateChange(Piper,MACH_ST_BOOTED);
 			
-			// Check for machine CMDs
-			if (Piper->IN.CMD.Abort) {
-				logInfo(Piper->IN.CFG.LoggerName, 0, "Command Abort", 0);
-				Piper_changeState(Piper, MACH_ST_ABORTING);
 			}
 			
 			break;
 		
 		case MACH_ST_BOOTED:
+
+			/****************************/
+			/* Check for State Complete	*/
+			/****************************/
+		
+			if( Piper->Internal.ResponseStatus == PIPER_RESPONSE_ST_STATE_DONE ){
+
+				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
+				
+				PiperStateChange(Piper,MACH_ST_STOPPED);
 			
-			// Check for State Complete
-			if (Piper->Internal.ResponseStatus == PIPER_RESPONSE_ST_STATE_DONE) {
-				logInfo(Piper->IN.CFG.LoggerName, 0, "State completed", 0);
-				Piper_changeState(Piper, MACH_ST_STOPPED);
 			}
-			
-			// Check for machine CMDs
-			if (Piper->IN.CMD.Abort) {
-				logInfo(Piper->IN.CFG.LoggerName, 0, "Abort Command", 0);
-				Piper_changeState(Piper, MACH_ST_ABORTING);
-			}
-			
+		
 			break;
 		
 		
