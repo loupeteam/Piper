@@ -45,7 +45,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper) {
 				
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 					
-				PiperStateChange(Piper,MACH_ST_BOOTED);
+				Piper_changeState(Piper,MACH_ST_BOOTED);
 			
 			}
 			
@@ -61,7 +61,7 @@ plcbit Piper_PackML(struct Piper_typ* Piper) {
 
 				logInfo(Piper->IN.CFG.LoggerName,0,"State completed",0);
 				
-				PiperStateChange(Piper,MACH_ST_STOPPED);
+				Piper_changeState(Piper,MACH_ST_STOPPED);
 			
 			}
 		
