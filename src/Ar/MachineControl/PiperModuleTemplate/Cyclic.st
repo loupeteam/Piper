@@ -1,13 +1,10 @@
-(********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Program: PiperModuleTemplate
- * File: PiperModuleTemplateCyclic.st
- * Author: Josh
- * Created: October 03, 2013
- ********************************************************************
- * Implementation of program PiperModuleTemplate
- ********************************************************************)
+(*
+* File: Cyclic.st
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of PiperModuleTemplate, licensed under the MIT License.
+*)
 
 PROGRAM _CYCLIC
 

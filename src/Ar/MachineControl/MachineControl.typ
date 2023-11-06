@@ -1,13 +1,10 @@
-(********************************************************************
- * COPYRIGHT -- Automation Resources Group
- ********************************************************************
- * Package: MachineControl
- * File: MachineControl.typ
- * Author: David Blackburn
- * Created: November 10, 2011
- ********************************************************************
- * Data types of package MachineControl
- ********************************************************************)
+(*
+* File: MachineControl.typ
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of the MachineControl package, licensed under the MIT License.
+*)
 
 TYPE
 	SUBSTATES : 

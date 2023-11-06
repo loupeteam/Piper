@@ -1,13 +1,10 @@
-(********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Program: MachineProg
- * File: PiperModuleInterface.st
- * Author: Josh
- * Created: October 03, 2013
- ********************************************************************
- * Implementation of program MachineProg
- ********************************************************************) 
+(*
+* File: PiperInterface.st
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of PiperModuleTemplate, licensed under the MIT License.
+*)
 
 ACTION PiperModuleInterface: 
 	

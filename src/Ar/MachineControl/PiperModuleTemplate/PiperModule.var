@@ -1,13 +1,11 @@
-(********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Program: PiperModuleTemplate
- * File: PiperModuleTemplate.var
- * Author: Josh
- * Created: October 03, 2013
- ********************************************************************
- * Local variables of program PiperModuleTemplate
- ********************************************************************)
+(*
+* File: PiperModule.var
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of PiperModuleTemplate, licensed under the MIT License.
+*)
+
 VAR
 	ModuleInterface : Module_Interface_typ;
 	Module : Piper_Module_Fub;

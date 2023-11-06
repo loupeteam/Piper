@@ -1,25 +1,10 @@
-(********************************************************************
- * COPYRIGHT -- Automation Resources Group
- ********************************************************************
- * PROGRAM: MachineProg
- * File: MachineProgCyclic.st
- * Author: David Blackburn
- * Created: November 10, 2011
- ********************************************************************
- * Implementation OF PROGRAM MachineProg
- ********************************************************************)
-
-
-(********************************************************************)
-(*																	*)
-(* This program provides a framework for top level machine control.	*)
-(*	This program should accept top level commands (Start, 			*)
-(*	Stop, etc.)	and interact with lower level control objects, 		*)
-(*	issuing	commands and checking status information.				*)
-(*																	*)
-(* The state machine and commands are PackML compliant.				*)
-(*																	*)
-(********************************************************************)
+(*
+* File: MachineProgCyclic.st
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of MachineHMI, licensed under the MIT License.
+*)
 
 
 PROGRAM _CYCLIC

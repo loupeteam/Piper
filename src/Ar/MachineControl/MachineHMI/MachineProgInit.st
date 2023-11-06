@@ -1,14 +1,10 @@
-(********************************************************************
- * COPYRIGHT -- Automation Resources Group
- ********************************************************************
- * Program: MachineProg
- * File: MachineProgInit.st
- * Author: David Blackburn
- * Created: November 10, 2011
- ********************************************************************
- * Implementation of program MachineProg
- ********************************************************************)
-
+(*
+* File: MachineProgInit.st
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of MachineHMI, licensed under the MIT License.
+*)
 
 PROGRAM _INIT
 	

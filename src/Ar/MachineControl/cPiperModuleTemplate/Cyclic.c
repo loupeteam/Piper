@@ -1,13 +1,10 @@
 /********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Program: cPiperModuleTemplate
- * File: cPiperModuleTemplateCyclic.c
- * Author: dfblackburn
- * Created: April 06, 2016
- ********************************************************************
- * Implementation of program cPiperModuleTemplate
- ********************************************************************/
+* File: Cyclic.c
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of cPiperModuleTemplate, licensed under the MIT License.
+********************************************************************/
 
 #include <bur/plctypes.h>
 

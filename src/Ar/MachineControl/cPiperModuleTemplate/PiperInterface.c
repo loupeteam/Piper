@@ -1,11 +1,10 @@
 /********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Program: ServoProg
- * File: PiperModuleInterface.c
- * Author: dfblackburn
- * Created: April 01, 2016
- *******************************************************************/
+* File: PiperInterface.c
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of cPiperModuleTemplate, licensed under the MIT License.
+********************************************************************/
 
 #include <bur/plctypes.h>
 #ifdef _DEFAULT_INCLUDES

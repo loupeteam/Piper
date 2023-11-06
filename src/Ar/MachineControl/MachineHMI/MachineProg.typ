@@ -1,13 +1,10 @@
-(********************************************************************
- * COPYRIGHT -- Automation Resources Group
- ********************************************************************
- * Program: MachineProg
- * File: MachineProg.typ
- * Author: David Blackburn
- * Created: November 10, 2011
- ********************************************************************
- * Local data types of program MachineProg
- ********************************************************************)
+(*
+* File: MachineProg.typ
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of MachineHMI, licensed under the MIT License.
+*)
 
 TYPE
 	Machine_HMI_CMD_typ : 	STRUCT 
