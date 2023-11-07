@@ -1,6 +1,6 @@
 {
   "name": "@loupeteam/piperprog",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "This is a program package that will add the Machine HMI Program and Machine Program to your AS project",
   "author": "Loupe",
   "license": "Loupe Software License Agreement",
@@ -21,6 +21,10 @@
       "cpu": [
         {
           "source": "MachineProg",
+          "destination": "TC3"
+        },
+        {
+          "source": "MachineHMI",
           "destination": "TC3"
         }
       ]
