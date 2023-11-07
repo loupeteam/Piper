@@ -1,5 +1,5 @@
 (*
-* File: MachineProgInit.st
+* File: MachineHMIInit.st
 * Copyright (c) 2023 Loupe
 * https://loupe.team
 * 

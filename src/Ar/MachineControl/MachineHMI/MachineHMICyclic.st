@@ -1,5 +1,5 @@
 (*
-* File: MachineProgCyclic.st
+* File: MachineHMICyclic.st
 * Copyright (c) 2023 Loupe
 * https://loupe.team
 * 

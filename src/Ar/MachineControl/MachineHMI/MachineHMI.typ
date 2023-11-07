@@ -1,5 +1,5 @@
 (*
-* File: MachineProg.typ
+* File: MachineHMI.typ
 * Copyright (c) 2023 Loupe
 * https://loupe.team
 * 
