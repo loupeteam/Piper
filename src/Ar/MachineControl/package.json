@@ -1,6 +1,6 @@
 {
   "name": "@loupeteam/piperprog",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "This is a program package that will add the Machine HMI Program and Machine Program to your AS project",
   "author": "Loupe",
   "license": "MIT",
