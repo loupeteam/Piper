@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@loupeteam/logthat": "^0.5.1",
-    "@loupeteam/piper": "^0.01.9"
+    "@loupeteam/piper": "^0.01.8"
   },
   "lpm": {
     "type": "program",
