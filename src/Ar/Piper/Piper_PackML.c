@@ -1,13 +1,10 @@
-/********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Library: Piper
- * File: Piper_PackML.c
- * Author: Josh
- * Created: October 03, 2013
- ********************************************************************
- * Implementation of library Piper
- ********************************************************************/
+/*
+* File: Piper_PackML.c
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of the Piper Library, licensed under the MIT License.
+*/
 
 #include <bur/plctypes.h>
 #ifdef __cplusplus

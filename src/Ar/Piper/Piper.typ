@@ -1,13 +1,10 @@
-(********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Library: Piper
- * File: Piper.typ
- * Author: Josh
- * Created: October 02, 2013
- ********************************************************************
- * Data types of library Piper
- ********************************************************************)
+(*
+* File: Piper.typ
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of the Piper Library, licensed under the MIT License.
+*)
 
 TYPE
 	Piper_typ : 	STRUCT 

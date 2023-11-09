@@ -1,13 +1,10 @@
-/********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Library: Piper
- * File: Piper_getBusyModuleList.c
- * Author: Liam
- * Created: January 24, 2023
- ********************************************************************
- * Implementation of library Piper
- ********************************************************************/
+/*
+* File: Piper_getBusyModules.c
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of the Piper Library, licensed under the MIT License.
+*/
 
 #include <bur/plctypes.h>
 #ifdef __cplusplus

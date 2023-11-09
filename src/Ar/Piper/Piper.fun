@@ -1,13 +1,10 @@
-(********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Library: Piper
- * File: Piper.fun
- * Author: Josh
- * Created: October 02, 2013
- ********************************************************************
- * Functions and function blocks of library Piper
- ********************************************************************)
+(*
+* File: Piper.fun
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of the Piper Library, licensed under the MIT License.
+*)
 
 FUNCTION Piper_fn_Cyclic : BOOL (*Master Cyclic function*) (*$GROUP=User*)
 	VAR_INPUT

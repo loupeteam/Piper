@@ -1,13 +1,11 @@
-(********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Library: Piper
- * File: Piper.var
- * Author: Josh
- * Created: October 02, 2013
- ********************************************************************
- * Constants of library Piper
- ********************************************************************)
+(*
+* File: Piper.var
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of the Piper Library, licensed under the MIT License.
+*)
+
 VAR CONSTANT
 	PIPER_DEFAULT_BOOTING_CYCLES : UINT := 50;
 	MAI_PIPER_MODULES : USINT := 99;
