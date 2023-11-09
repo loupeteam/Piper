@@ -2,6 +2,8 @@
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="Library" Language="ANSIC" Description="A new source library" Reference="true">C:\Projects\Loupe\Piper\src\Ar\Piper\ANSIC.lby</Object>
+    <Object Type="Library" Language="Binary">hmitools</Object>
+    <Object Type="Library" Language="Binary">ringbuflib</Object>
     <Object Type="Library" Language="Binary">logthat</Object>
     <Object Type="Library" Language="Binary">stringext</Object>
   </Objects>
