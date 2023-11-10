@@ -7,8 +7,6 @@
   <TaskClass Name="Cyclic#4">
     <Task Name="MachineHMI" Source="MachineControl.MachineHMI.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="MachinePro" Source="MachineControl.MachineProg.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="PiperModul" Source="MachineControl.PiperModuleTemplate.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="cPiperModu" Source="MachineControl.cPiperModuleTemplate.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
