@@ -1,0 +1,12 @@
+(*
+* File: MachineHMI.var
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of MachineHMI, licensed under the MIT License.
+*)
+
+VAR
+	HMIMachineCMD : Machine_HMI_CMD_typ := (0);
+	HMIMachineState : Machine_HMI_State_typ := (0);
+END_VAR

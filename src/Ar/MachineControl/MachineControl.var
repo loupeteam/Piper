@@ -1,0 +1,17 @@
+(*
+* File: MachineControl.var
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of the MachineControl package, licensed under the MIT License.
+*)
+VAR
+	gMachine : Piper_typ := (0);
+END_VAR
+VAR RETAIN
+	BootTime : TIME;
+END_VAR
+VAR
+	gActiveMode : MODE_MACHINE_ENUM := MODE_MACHINE_AUTO;
+	gRequestedMode : MODE_MACHINE_ENUM := MODE_MACHINE_AUTO;
+END_VAR

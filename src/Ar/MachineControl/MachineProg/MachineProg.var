@@ -1,0 +1,17 @@
+(*
+* File: MachineProg.var
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of MachineProg, licensed under the MIT License.
+*)
+
+VAR
+	StatusModule : Module_Interface_typ;
+	Module : REFERENCE TO Module_Interface_typ;
+	TON_0 : TON;
+	StateString : STRING[80];
+END_VAR
+VAR RETAIN
+	ByPassAll : BOOL := 0;
+END_VAR

@@ -1,0 +1,12 @@
+(*
+* File: PiperModule.var
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of cPiperModuleTemplate, licensed under the MIT License.
+*)
+
+VAR
+	ModuleInterface : Module_Interface_typ;
+	Module : Piper_Module_Fub;
+END_VAR
