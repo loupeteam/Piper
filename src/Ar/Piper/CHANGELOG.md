@@ -1,4 +1,5 @@
 # Change log
+0.2.0 - Expand stringext dependency
 
 0.1.9 - Add Piper_getBusyModules to display several busy modules at once
       - Prevent abort commands while in BOOTING and BOOTED
