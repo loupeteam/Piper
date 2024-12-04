@@ -1,10 +1,13 @@
-/*
-* File: Piper_setCommand.c
-* Copyright (c) 2023 Loupe
-* https://loupe.team
-* 
-* This file is part of the Piper Library, licensed under the MIT License.
-*/
+/********************************************************************
+ * COPYRIGHT --  
+ ********************************************************************
+ * Library: Piper
+ * File: Piper_setCommand.c
+ * Author: Josh
+ * Created: October 02, 2013
+ ********************************************************************
+ * Implementation of library Piper
+ ********************************************************************/
 
 #include <bur/plctypes.h>
 #ifdef __cplusplus
@@ -42,8 +45,8 @@ plcbit Piper_setCommand(struct Piper_typ* Piper) {
 			}
 			
 			// Set the current state
-			Module->PiperState= Piper->OUT.State;
-			Module->PiperSubState= Piper->OUT.SubState;
+			Module->PiperState = Piper->OUT.State;
+			Module->PiperSubState = Piper->OUT.SubState;
 		}
 		else if (!Module->ModuleIsBypassed) {
 			
@@ -58,9 +61,59 @@ plcbit Piper_setCommand(struct Piper_typ* Piper) {
 	
 	// Update our oModuleInterface for status reasons
 	Module = &Piper->IO.oMainInterface;
+	
+	// If we are changing states, reset the ModuleSubStateRequest and Module response
+	// This only works because oMainInterface.PiperState hasn't been set yet
+	if (Module->PiperState != Piper->OUT.State) {
+		Module->ModuleSubStateRequest = 0;
+		Module->ModuleResponse = 0;
+	}
+	else {
+		// Set the ModuleSubStateRequest and Module response
+		switch (Piper->Internal.ResponseStatus) {
+			case PIPER_RESPONSE_ST_NEXT_STEP:
+				Module->ModuleSubStateRequest = Piper->Internal.NextSubState;
+				break;
+		
+			case PIPER_RESPONSE_ST_STATE_DONE:
+				Module->ModuleResponse = Piper->OUT.State;
+				Module->ModuleSubStateRequest = 0;
+				break;
+		
+			case PIPER_RESPONSE_ST_ERROR:
+				Module->ModuleResponse = MACH_ST_ERROR;
+				break;
+		
+			case PIPER_RESPONSE_ST_BUSY:
+				Module->ModuleResponse = MACH_ST_NOT_READY;
+				break;
+		
+			default:
+				break;
+		}
+	}
+	
 	// Set the current state
-	Module->PiperState= Piper->OUT.State;
-	Module->PiperSubState= Piper->OUT.SubState;
+	Module->PiperState = Piper->OUT.State;
+	Module->PiperSubState = Piper->OUT.SubState;
+	
+	// Set bypass status
+	Module->ModuleBypass = Piper->IO.iMainInterface.ModuleBypass;
+	Module->ModuleIsBypassed = Piper->IO.iMainInterface.ModuleIsBypassed;
+	
+	// Set name and status
+	stringlcpy(Module->ModuleName, Piper->IO.iMainInterface.ModuleName, sizeof(Module->ModuleName));
+	if (Piper->OUT.BusyModule == 0) {
+		strcpy(Module->ModuleStatus, "");
+	}
+	else {
+		stringlcpy(Module->ModuleStatus, ((Module_Interface_typ*)Piper->OUT.BusyModule)->ModuleName, sizeof(Module->ModuleStatus));
+		stringlcat(Module->ModuleStatus, ": ", sizeof(Module->ModuleStatus));
+		stringlcat(Module->ModuleStatus, ((Module_Interface_typ*)Piper->OUT.BusyModule)->ModuleStatus, sizeof(Module->ModuleStatus));
+	}
+	
+	// Set commands
+	Module->ModuleCommand = Piper->IN.CMD;
 	
 	return 0;
 }

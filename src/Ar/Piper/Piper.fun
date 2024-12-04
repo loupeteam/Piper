@@ -57,12 +57,6 @@ FUNCTION Piper_handleResponseState : BOOL (*This function looks at the response 
 	END_VAR
 END_FUNCTION
 
-FUNCTION Piper_handleResponseState_remote : BOOL (*This function looks at the response state and decides what Step or State to request next*) (*$GROUP=User*)
-	VAR_INPUT
-		Piper : Piper_typ;
-	END_VAR
-END_FUNCTION
-
 FUNCTION Piper_PackML : BOOL (*Implements PackML state machine for Piper*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
@@ -74,6 +68,13 @@ FUNCTION Piper_setCommand : BOOL (*Sets commands to the subsystems*) (*$GROUP=Us
 		Piper : Piper_typ;
 	END_VAR
 END_FUNCTION
+
+FUNCTION Piper_setSubstate : BOOL (*Sets the substate given the current internal response status*) (*$GROUP=User*)
+	VAR_INPUT
+		Piper : Piper_typ;
+	END_VAR
+END_FUNCTION
+
 (*
 Internal Helper Functions
 *)

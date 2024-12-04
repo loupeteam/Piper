@@ -1,13 +1,10 @@
-/********************************************************************
- * COPYRIGHT --  
- ********************************************************************
- * Library: Piper
- * File: Piper_PackML.c
- * Author: Josh
- * Created: October 03, 2013
- ********************************************************************
- * Implementation of library Piper
- ********************************************************************/
+/*
+* File: Piper_getState_remote.c
+* Copyright (c) 2023 Loupe
+* https://loupe.team
+* 
+* This file is part of the Piper Library, licensed under the MIT License.
+*/
 
 #include <bur/plctypes.h>
 #ifdef __cplusplus
@@ -28,20 +25,10 @@ plcbit Piper_getState_remote(struct Piper_typ* Piper) {
 	// Set Piper variables based on IO
 	if (Piper->IO.iMainInterface.PiperState != Piper->OUT.State) {
 		Piper_changeState(Piper, Piper->IO.iMainInterface.PiperState);
-		// Update output to be consistent with new state
-		memcpy(&Piper->IO.oMainInterface, &Piper->IO.iMainInterface, sizeof(Piper->IO.oMainInterface));
 	}
 	else if (Piper->IO.iMainInterface.PiperSubState != Piper->OUT.SubState) {
 		Piper->OUT.SubState = Piper->IO.iMainInterface.PiperSubState;
-		// Update output to be consistent with new substate
-		memcpy(&Piper->IO.oMainInterface, &Piper->IO.iMainInterface, sizeof(Piper->IO.oMainInterface));
 	}
-	
-	// Always update certain variables
-	memcpy(&Piper->IO.oMainInterface.ModuleName, &Piper->IO.iMainInterface.ModuleName, sizeof(Piper->IO.oMainInterface.ModuleName));
-	memcpy(&Piper->IO.oMainInterface.ModuleCommand, &Piper->IO.iMainInterface.ModuleCommand, sizeof(Piper->IO.oMainInterface.ModuleCommand));
-	memcpy(&Piper->IO.oMainInterface.ModuleBypass, &Piper->IO.iMainInterface.ModuleBypass, sizeof(Piper->IO.oMainInterface.ModuleBypass));
-	memcpy(&Piper->IO.oMainInterface.ModuleIsBypassed, &Piper->IO.iMainInterface.ModuleIsBypassed, sizeof(Piper->IO.oMainInterface.ModuleIsBypassed));
 	
 	return 0;
 }

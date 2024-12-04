@@ -12,9 +12,9 @@
     <File Description="Reads the status of Pipes">Piper_checkResponses.c</File>
     <File Description="Gets state and substate from main Piper">Piper_getState_remote.c</File>
     <File Description="This function looks at the response state and decides what Step or State to enter next">Piper_handleResponseState.c</File>
-    <File Description="This function looks at the response state and decides what Step or State to request next">Piper_handleResponseState_remote.c</File>
     <File Description="Implements PackML state machine for Piper">Piper_PackML.c</File>
     <File Description="Sets commands to the subsystems">Piper_setCommand.c</File>
+    <File Description="Sets the substate given the current internal response status">Piper_setSubstate.c</File>
     <File Description="Returns a string for the given PackML state">PackMLStateString.c</File>
     <File Description="Returns whether the given module is done with its current state">PiperModuleDoneWithState.c</File>
     <File Description="Returns whether the given module is done with its current substate">PiperModuleDoneWithSubstate.c</File>

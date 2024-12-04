@@ -154,21 +154,10 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper) {
 		currentPipe++;
 	}
 	
-	if (Piper->OUT.BusyModule == 0) {
-		// No busy module, no status
-		strcpy(Piper->IO.oMainInterface.ModuleStatus, "");
-	}
-	else {
-		stringlcpy(Piper->IO.oMainInterface.ModuleStatus, ((Module_Interface_typ*)Piper->OUT.BusyModule)->ModuleName, sizeof(Piper->IO.oMainInterface.ModuleStatus));
-		stringlcat(Piper->IO.oMainInterface.ModuleStatus, ": ", sizeof(Piper->IO.oMainInterface.ModuleStatus));
-		stringlcat(Piper->IO.oMainInterface.ModuleStatus, ((Module_Interface_typ*)Piper->OUT.BusyModule)->ModuleStatus, sizeof(Piper->IO.oMainInterface.ModuleStatus));
-	}
-	
 	currentPipe = 0;
 	
 	// Check if any module has an error
-	while (currentPipe <= MAI_PIPER_MODULES && Piper->Internal.ModuleList[currentPipe] != 0)
-	{
+	while (currentPipe <= MAI_PIPER_MODULES && Piper->Internal.ModuleList[currentPipe] != 0) {
 		// Get the pipe at current index
 		Module = (Module_Interface_typ *)(Piper->Internal.ModuleList[currentPipe]);
 		
@@ -185,7 +174,7 @@ plcbit Piper_checkResponses(struct Piper_typ* Piper) {
 			Piper->Internal.ResponseStatus = PIPER_RESPONSE_ST_ERROR;
 			
 		}
-		currentPipe+=1;
+		currentPipe++;
 	}
 	
 	return 0;
