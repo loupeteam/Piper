@@ -21,7 +21,7 @@ PROGRAM _CYCLIC
 	CommsHandleNetwork; // This needs to be after CommsHandleInputs, but before Piper is called
 
 	//Piper controls the main machine state
-	Piper_fn_Cyclic( gMachine, gIsRemote );
+	Piper_Remote_fn_Cyclic( gMachine, gIsRemote );
 
 
 	

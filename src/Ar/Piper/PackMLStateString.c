@@ -22,9 +22,10 @@
 
 #define CASE(x) case x: strcpy(String,#x);
 
-// Returns a string for the given PackML state
-plcbit PackMLStateString(enum MACH_ST_enum State, plcstring* String) {
-	switch (State) {
+/* Returns a string for the given PackML state */
+plcbit PackMLStateString(enum MACH_ST_enum State, plcstring* String)
+{
+	switch(State){
 		CASE(MACH_ST_) break;
 		CASE(MACH_ST_ABORTED) break;
 		CASE(MACH_ST_ABORTING) break;

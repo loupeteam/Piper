@@ -19,8 +19,10 @@
 	};
 #endif
 
-// Implements PackML state machine for Piper
-plcbit Piper_PackML(struct Piper_typ* Piper) {
+/* Implements PackML state machine for Piper */
+plcbit Piper_PackML(struct Piper_typ* Piper)
+{
+
 	
 	switch (Piper->OUT.State) {
 		
