@@ -12,6 +12,12 @@
 FUNCTION Piper_fn_Cyclic : BOOL (*Master Cyclic function*) (*$GROUP=User*)
 	VAR_INPUT
 		Piper : Piper_typ;
+	END_VAR
+END_FUNCTION
+
+FUNCTION Piper_Remote_fn_Cyclic : BOOL (*Master Cyclic function*) (*$GROUP=User*)
+	VAR_INPUT
+		Piper : Piper_typ;
 		IsRemote : BOOL;
 	END_VAR
 END_FUNCTION

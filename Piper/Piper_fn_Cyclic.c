@@ -23,8 +23,12 @@
 
 #include <string.h>
 
+plcbit Piper_fn_Cyclic(struct Piper_typ* Piper) {
+	Piper_Remote_fn_Cyclic(Piper, FALSE);
+}
+
 // Master Cyclic function
-plcbit Piper_fn_Cyclic(struct Piper_typ* Piper, BOOL IsRemote) {
+plcbit Piper_Remote_fn_Cyclic(struct Piper_typ* Piper, BOOL IsRemote) {
 	
 	if (Piper == 0) {
 		return 1;
