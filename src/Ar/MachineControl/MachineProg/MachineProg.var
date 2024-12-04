@@ -15,3 +15,6 @@ END_VAR
 VAR RETAIN
 	ByPassAll : BOOL := 0;
 END_VAR
+VAR
+	Configuration : Configuration_typ;
+END_VAR
