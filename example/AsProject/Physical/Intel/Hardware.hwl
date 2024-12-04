@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?AutomationStudio FileVersion="4.9"?>
+<BR.AS.HardwareTopology>
+  <TimeStamps>
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="11/06/2023 14:02:09" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="5PC910.SX01-00" Type="5PC910.SX01-00" X="68.2999954" Y="90" />
+    <Module Name="5AC901.BX01-00" Type="5AC901.BX01-00" X="100" Y="123" />
+    <Module Name="5PC900_TS17_00" Type="5PC900.TS17-00" X="100" Y="100" />
+  </Modules>
+  <Links />
+  <InfoElements />
+</BR.AS.HardwareTopology>

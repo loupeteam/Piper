@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.11.2.75 FileVersion="4.9"?>
+<Hardware xmlns="http://br-automation.co.at/AS/Hardware">
+  <Module Name="X20BB52" Type="X20BB52" Version="1.2.0.0" />
+  <Module Name="X20CP0410" Type="X20CP0410" Version="1.5.0.0">
+    <Connection Connector="SL" TargetModule="X20BB52" TargetConnector="SL1" />
+    <Connector Name="IF2">
+      <Parameter ID="ActivateDevice" Value="1" />
+    </Connector>
+    <Parameter ID="ConfigurationID" Value="AsProject_ARM" />
+    <Parameter ID="PermanentPvSize" Value="1000" />
+    <Parameter ID="RemanentGlobalPvSize" Value="1000" />
+    <Parameter ID="TimerDeviceType" Value="SWIOTIMER" />
+    <Parameter ID="Cyclic1Duration" Value="10000" />
+    <Parameter ID="Cyclic1Tolerance" Value="10000" />
+    <Parameter ID="Cyclic2Duration" Value="20000" />
+    <Parameter ID="Cyclic2Tolerance" Value="20000" />
+    <Parameter ID="Cyclic3Duration" Value="50000" />
+    <Parameter ID="Cyclic3Tolerance" Value="50000" />
+    <Parameter ID="Cyclic4Duration" Value="100000" />
+    <Parameter ID="Cyclic4Tolerance" Value="100000" />
+    <Parameter ID="Cyclic5Duration" Value="200000" />
+    <Parameter ID="Cyclic5Tolerance" Value="200000" />
+    <Parameter ID="Cyclic6Duration" Value="500000" />
+    <Parameter ID="Cyclic6Tolerance" Value="500000" />
+    <Parameter ID="Cyclic7Duration" Value="1000000" />
+    <Parameter ID="Cyclic7Tolerance" Value="1000000" />
+    <Parameter ID="Cyclic8Duration" Value="10000" />
+    <Parameter ID="Cyclic8Tolerance" Value="30000000" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="USER" />
+    <Parameter ID="FileDevicePath1" Value="USER_PATH" />
+  </Module>
+  <Module Name="X20PS9600" Type="X20PS9600" Version="1.6.0.0">
+    <Connection Connector="PS" TargetModule="X20BB52" TargetConnector="PS1" />
+    <Connection Connector="SS1" TargetModule="X20TB12" TargetConnector="SS" />
+  </Module>
+  <Module Name="X20TB12" Type="X20TB12" Version="1.0.0.0" />
+</Hardware>
