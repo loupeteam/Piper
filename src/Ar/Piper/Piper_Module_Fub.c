@@ -78,8 +78,7 @@ void Piper_Module_Fub(struct Piper_Module_Fub* inst) {
 		LogData.i[0] = inst->internal.ModuleIndex;
 		if (inst->Piper->OUT.State > MACH_ST_BOOTING) {
 			logWarning(inst->Piper->IN.CFG.LoggerName, 0, "New module added after BOOTING at index %i: %s", (UDINT)&LogData);
-		}
-		else {
+		} else {
 			logInfo(inst->Piper->IN.CFG.LoggerName, 0, "New module added at index %i: %s", (UDINT)&LogData);
 		}
 	}
