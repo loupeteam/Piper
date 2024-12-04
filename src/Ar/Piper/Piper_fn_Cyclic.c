@@ -21,7 +21,7 @@
 #include <string.h>
 
 plcbit Piper_fn_Cyclic(struct Piper_typ* Piper) {
-	Piper_Remote_fn_Cyclic(Piper, FALSE);
+	Piper_Remote_fn_Cyclic(Piper, 0);
 }
 
 // Master Cyclic function
