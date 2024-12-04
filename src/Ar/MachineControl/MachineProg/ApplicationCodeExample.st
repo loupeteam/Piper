@@ -11,7 +11,8 @@ ACTION CommsVerifySize:
 		AND SIZEOF(gMachine.IO.iMainInterface) = SIZEOF(iModuleInterface) THEN
 		ioSizeVerfied := TRUE;
 	ELSE
-		errcolAddError(ADR('MachineProg'), ADR('Piper IO interface does not match buffer size. Comms disabled.'), 0, 0, gErrorCollector);
+		logError('App', 0, 'Piper IO interface does not match buffer size. Comms disabled.', 0);
+		//errcolAddError(ADR('MachineProg'), ADR('Piper IO interface does not match buffer size. Comms disabled.'), 0, 0, gErrorCollector);
 	END_IF
 
 END_ACTION
@@ -104,7 +105,8 @@ ACTION CommsHandleNetwork:
 				
 				IF NOT remoteModuleError THEN
 					remoteModuleError := TRUE; // Error latch so we dont spam errors
-					errcolAddError(ADR(remoteModuleInterface.ModuleName), ADR('Module disconnected from powerlink'), 0, ADR(remoteModuleErrorAck), gErrorCollector);
+					logError('App', 0, 'Module disconnected from powerlink', 0);
+					//errcolAddError(ADR(remoteModuleInterface.ModuleName), ADR('Module disconnected from powerlink'), 0, ADR(remoteModuleErrorAck), gErrorCollector);
 				END_IF
 			END_IF
 			
