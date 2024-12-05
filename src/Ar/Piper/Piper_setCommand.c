@@ -16,6 +16,7 @@
 #endif
 
 #include "Piper.h"
+#include "string.h"
 
 #ifdef __cplusplus
 	};
