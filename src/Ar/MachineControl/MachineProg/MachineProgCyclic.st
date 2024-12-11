@@ -7,15 +7,21 @@
 *)
 
 PROGRAM _INIT
-
-
+	
+	gIsRemote := Configuration.remotePLC;
+	
+	CommsVerifySize;
+	
 END_PROGRAM
 
 PROGRAM _CYCLIC
+	
+	CommsHandleInputs;
 
+	CommsHandleNetwork; // This needs to be after CommsHandleInputs, but before Piper is called
 
 	//Piper controls the main machine state
-	Piper_fn_Cyclic( gMachine );
+	Piper_Remote_fn_Cyclic( gMachine, gIsRemote );
 
 
 	
@@ -91,6 +97,6 @@ PROGRAM _CYCLIC
 	END_IF;
 	
 	
-	
+	CommsHandleOutputs;
 	
 END_PROGRAM

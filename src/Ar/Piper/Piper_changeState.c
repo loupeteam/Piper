@@ -19,7 +19,7 @@
 #endif
 
 /* Logs a state change. */
-plcbit PiperStateChange(struct Piper_typ* Piper, enum MACH_ST_enum State)
+plcbit Piper_changeState(struct Piper_typ* Piper, enum MACH_ST_enum State)
 {
 	StrExtArgs_typ LogData;
 	

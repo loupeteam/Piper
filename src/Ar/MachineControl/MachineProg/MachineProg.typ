@@ -7,5 +7,7 @@
 *)
 
 TYPE
-
+	Configuration_typ : 	STRUCT 
+		remotePLC : BOOL;
+	END_STRUCT;
 END_TYPE

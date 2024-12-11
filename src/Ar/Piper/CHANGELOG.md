@@ -1,4 +1,7 @@
 # Change log
+
+0.3.0 - Add support for multiple PLCs
+
 0.2.0 - Expand stringext dependency
 
 0.1.9 - Add Piper_getBusyModules to display several busy modules at once
