@@ -1,0 +1,126 @@
+name: Build, Export, and Publish
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g. v1.0.0)'
+        required: true
+
+jobs:
+  build-export-publish:
+    runs-on: [AS6-runner]
+
+    permissions:
+      contents: read
+      packages: write
+
+    env:
+      PROJECT:     example/AsProject/AsProject.apj
+      PROJECT_DIR: example/AsProject
+      LIBRARY:     Piper
+      LIBRARY_DIR: src/Ar/Piper
+      EXPORT_DIR:  export
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@loupeteam'
+
+      - name: Resolve version
+        id: version
+        shell: pwsh
+        run: |
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+            $ver = $env:GITHUB_REF_NAME -replace '^v', ''
+          } else {
+            $ver = "${{ inputs.version }}" -replace '^v', ''
+          }
+          if (-not $ver) {
+            Write-Error "Could not determine version. Push a v*.*.* tag or supply the version input."
+            exit 1
+          }
+          Write-Host "Publishing version: $ver"
+          "version=$ver" | Out-File -Append -Encoding utf8 -FilePath $env:GITHUB_OUTPUT
+
+      - name: Find AS6 build executable
+        uses: loupeteam/br-actions/find-as6-build@v1
+        id: find-as
+
+      - name: Build Intel
+        uses: loupeteam/br-actions/build-as-project@v1
+        with:
+          exe-path: ${{ steps.find-as.outputs.exe-path }}
+          project:  ${{ env.PROJECT }}
+          config:   Intel
+
+      - name: Build ARM
+        uses: loupeteam/br-actions/build-as-project@v1
+        with:
+          exe-path: ${{ steps.find-as.outputs.exe-path }}
+          project:  ${{ env.PROJECT }}
+          config:   ARM
+
+      - name: Export library
+        uses: loupeteam/br-actions/export-as-library@v1
+        with:
+          project-dir: ${{ env.PROJECT_DIR }}
+          library:     ${{ env.LIBRARY }}
+          library-dir: ${{ env.LIBRARY_DIR }}
+          configs:     Intel ARM
+          output:      ${{ env.EXPORT_DIR }}
+          as-install:  ${{ steps.find-as.outputs.install-path }}
+
+      - name: Locate exported version directory
+        id: export-dir
+        shell: pwsh
+        run: |
+          $path = Get-ChildItem "$env:EXPORT_DIR/$env:LIBRARY" -Directory |
+                  Select-Object -First 1 -ExpandProperty FullName
+          if (-not $path) {
+            Write-Error "No exported version directory found under $env:EXPORT_DIR/$env:LIBRARY"
+            exit 1
+          }
+          Write-Host "Exported version directory: $path"
+          "path=$path" | Out-File -Append -Encoding utf8 -FilePath $env:GITHUB_OUTPUT
+
+      - name: Generate package.json
+        uses: loupeteam/br-actions/prepare-lpm-package@v1
+        with:
+          library-dir: ${{ env.LIBRARY_DIR }}
+          output-dir:  ${{ steps.export-dir.outputs.path }}
+          version:     ${{ steps.version.outputs.version }}
+
+      - name: Publish to GitHub Packages
+        shell: pwsh
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          Write-Host "Publishing @loupeteam/$($env:LIBRARY.ToLower())@${{ steps.version.outputs.version }}"
+          Push-Location "${{ steps.export-dir.outputs.path }}"
+          npm publish
+          Pop-Location
+
+      - name: Upload exported library artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.LIBRARY }}-${{ steps.version.outputs.version }}
+          path: ${{ env.EXPORT_DIR }}/${{ env.LIBRARY }}/
+          if-no-files-found: error
+
+      - name: Upload build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BuildDiagnostics
+          path: example/AsProject/Temp/BuildDiagnostics.log
+          if-no-files-found: ignore
