@@ -1,0 +1,17 @@
+                                                                      
+VAR CONSTANT
+	INIT_REASON_WARMSTART		: SINT	:= 1;		(*warm restart boot information*)
+	INIT_REASON_COLDSTART		: SINT	:= 2;		(*cold restart boot information*)
+	INIT_REASON_DOWNLOAD		: SINT	:= 3;		(*download boot information*)
+	INIT_REASON_UNKNOWN			: SINT	:= -1;		(*unknown boot information*)
+	TARGET_LITTLE_ENDIAN		: USINT	:= 1;		(*formatSpec*)
+	TARGET_BIG_ENDIAN			: USINT	:= 2;		(*formatSpec*)
+	brDRAM						: UDINT	:= 0;		(*DRAM memory type*)
+	brUSRRAM					: UDINT	:= 1;		(*USRRAM memory type*)
+	brSYSROM					: UDINT	:= 2;		(*SYSROM memory type*)
+	brUSRROM					: UDINT	:= 3;		(*USRROM memory type*)
+	brLOCAL_REMANENT_PV  		: UDINT	:= 4;		(*local REMMEM memory type*)
+	brGLOBAL_REMANENT_PV 		: UDINT	:= 5;		(*global REMMEM memory type*)
+	brERR_INVALID_PARAMETER		: UINT	:= 27251;	(*invalid parameter transferred*)
+	brERR_NON_CYCLIC_CONTEXT	: UINT	:= 27252;	(*non-cyclic context call*)
+END_VAR

@@ -2,14 +2,20 @@
   "name": "asproject",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "lpmConfig": {
+    "deploymentConfigs": [
+      "Intel",
+      "ARM"
+    ],
+    "gitClient": "GitExtensions"
+  },
   "dependencies": {
-    "@loupeteam/hmitools": "^0.11.4"
+    "@loupeteam/librarybuilderproject": "^1.0.1",
+    "@loupeteam/logthat": "^1.0.0",
+    "@loupeteam/stringext": "^1.0.0"
   }
 }

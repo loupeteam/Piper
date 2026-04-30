@@ -1,0 +1,16 @@
+{
+  "name": "@loupeteam/piper",
+  "version": "0.0.0",
+  "description": "PackML-style state machine library for B&R Automation Studio",
+  "homepage": "https://loupeteam.github.io/LoupeDocs/libraries/piper.html",
+  "scripts": {},
+  "keywords": [],
+  "author": "Loupe",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/loupeteam/Piper" },
+  "lpm": { "type": "library" },
+  "dependencies": {
+    "@loupeteam/logthat": ">=1.0.0",
+    "@loupeteam/stringext": ">=1.0.0"
+  }
+}

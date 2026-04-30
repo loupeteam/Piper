@@ -1,13 +1,11 @@
-(********************************************************************
- * COPYRIGHT -- Automation Resources Group
- ********************************************************************
- * Library: StringExt
+(*
  * File: StringExt.fun
- * Author: David Blackburn
- * Created: January 26, 2012
- ********************************************************************
- * Functions and function blocks of library StringExt
- ********************************************************************)
+ * Copyright (c) 2023 Loupe
+ * https://loupe.team
+ * 
+ * This file is part of StringExt, licensed under the MIT License.
+ *
+ *)
 
 FUNCTION lstrip : UDINT (*Strips the leading characters from a string*)
 	VAR_INPUT
@@ -185,5 +183,37 @@ FUNCTION stringpTime : DATE_AND_TIME (*Parse time string*)
 	VAR_INPUT
 		src : UDINT; (*String to parse*)
 		format : UDINT; (*Assumed format of time string*)
+	END_VAR
+END_FUNCTION
+
+FUNCTION stringdtoa : UDINT
+	VAR_INPUT
+		value : LREAL;
+		buffer : STRING[80];
+		ndigits : UDINT;
+		bufferSize : UDINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION stringftoa : UDINT
+	VAR_INPUT
+		value : REAL;
+		buffer : STRING[80];
+		ndigits : UDINT;
+		bufferSize : UDINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION stringstrtod : LREAL
+	VAR_INPUT
+		value : STRING[80];
+		pEnd : REFERENCE TO STRING[80];
+	END_VAR
+END_FUNCTION
+
+FUNCTION stringstrtof : REAL
+	VAR_INPUT
+		value : STRING[80];
+		pEnd : REFERENCE TO STRING[80];
 	END_VAR
 END_FUNCTION

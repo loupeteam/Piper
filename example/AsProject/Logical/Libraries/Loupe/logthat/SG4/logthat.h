@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* logthat 0.05.1 */
+/* logthat 1.0.0 */
 
 #ifndef _LOGTHAT_
 #define _LOGTHAT_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _logthat_VERSION
-#define _logthat_VERSION 0.05.1
+#define _logthat_VERSION 1.0.0
 #endif
 
 #include <bur/plctypes.h>
@@ -20,38 +20,18 @@ extern "C"
 #ifdef _SG3
 		#include "ArEventLog.h"
 		#include "AsBrStr.h"
-		#include "StringExt.h"
+		#include "stringext.h"
 #endif
 #ifdef _SG4
 		#include "ArEventLog.h"
 		#include "AsBrStr.h"
-		#include "StringExt.h"
+		#include "stringext.h"
 #endif
 #ifdef _SGC
 		#include "ArEventLog.h"
 		#include "AsBrStr.h"
-		#include "StringExt.h"
+		#include "stringext.h"
 #endif
-
-
-/* Constants */
-#ifdef _REPLACE_CONST
- #define LOG_STRLEN_LOGGERNAME 8U
- #define LOG_STRLEN_MESSAGE 320U
- #define LOG_STRLEN_STATENAME 80U
- #define LOG_STRLEN_MODULENAME 20U
- #define LOG_DEFAULT_LOGGERSIZE 100000U
- #define LOG_DEFAULT_FACILITY 0U
-#else
- _GLOBAL_CONST unsigned short LOG_STRLEN_LOGGERNAME;
- _GLOBAL_CONST unsigned short LOG_STRLEN_MESSAGE;
- _GLOBAL_CONST unsigned short LOG_STRLEN_STATENAME;
- _GLOBAL_CONST unsigned short LOG_STRLEN_MODULENAME;
- _GLOBAL_CONST unsigned long LOG_DEFAULT_LOGGERSIZE;
- _GLOBAL_CONST unsigned short LOG_DEFAULT_FACILITY;
-#endif
-
-
 
 
 /* Datatypes and datatypes of function blocks */
@@ -143,6 +123,26 @@ _BUR_PUBLIC signed long logSuccess(plcstring* loggerName, unsigned short errorID
 _BUR_PUBLIC signed long logWarning(plcstring* loggerName, unsigned short errorID, plcstring* errorString, unsigned long pMsgData);
 _BUR_PUBLIC signed long logError(plcstring* loggerName, unsigned short errorID, plcstring* errorString, unsigned long pMsgData);
 _BUR_PUBLIC signed long logInfo(plcstring* loggerName, unsigned short errorID, plcstring* errorString, unsigned long pMsgData);
+
+
+/* Constants */
+#ifdef _REPLACE_CONST
+ #define LOG_STRLEN_LOGGERNAME 8U
+ #define LOG_STRLEN_MESSAGE 320U
+ #define LOG_STRLEN_STATENAME 80U
+ #define LOG_STRLEN_MODULENAME 20U
+ #define LOG_DEFAULT_LOGGERSIZE 100000U
+ #define LOG_DEFAULT_FACILITY 0U
+#else
+ _GLOBAL_CONST unsigned short LOG_STRLEN_LOGGERNAME;
+ _GLOBAL_CONST unsigned short LOG_STRLEN_MESSAGE;
+ _GLOBAL_CONST unsigned short LOG_STRLEN_STATENAME;
+ _GLOBAL_CONST unsigned short LOG_STRLEN_MODULENAME;
+ _GLOBAL_CONST unsigned long LOG_DEFAULT_LOGGERSIZE;
+ _GLOBAL_CONST unsigned short LOG_DEFAULT_FACILITY;
+#endif
+
+
 
 
 #ifdef __cplusplus

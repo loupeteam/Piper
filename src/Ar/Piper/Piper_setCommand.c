@@ -103,14 +103,14 @@ plcbit Piper_setCommand(struct Piper_typ* Piper) {
 	Module->ModuleIsBypassed = Piper->IO.iMainInterface.ModuleIsBypassed;
 	
 	// Set name and status
-	stringlcpy(Module->ModuleName, Piper->IO.iMainInterface.ModuleName, sizeof(Module->ModuleName));
+	stringlcpy((UDINT)Module->ModuleName, (UDINT)Piper->IO.iMainInterface.ModuleName, sizeof(Module->ModuleName));
 	if (Piper->OUT.BusyModule == 0) {
 		strcpy(Module->ModuleStatus, "");
 	}
 	else {
-		stringlcpy(Module->ModuleStatus, ((Module_Interface_typ*)Piper->OUT.BusyModule)->ModuleName, sizeof(Module->ModuleStatus));
-		stringlcat(Module->ModuleStatus, ": ", sizeof(Module->ModuleStatus));
-		stringlcat(Module->ModuleStatus, ((Module_Interface_typ*)Piper->OUT.BusyModule)->ModuleStatus, sizeof(Module->ModuleStatus));
+		stringlcpy((UDINT)Module->ModuleStatus, (UDINT)((Module_Interface_typ*)Piper->OUT.BusyModule)->ModuleName, sizeof(Module->ModuleStatus));
+		stringlcat((UDINT)Module->ModuleStatus, (UDINT)": ", sizeof(Module->ModuleStatus));
+		stringlcat((UDINT)Module->ModuleStatus, (UDINT)((Module_Interface_typ*)Piper->OUT.BusyModule)->ModuleStatus, sizeof(Module->ModuleStatus));
 	}
 	
 	// Set commands

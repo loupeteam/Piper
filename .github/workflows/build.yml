@@ -1,0 +1,57 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      build-mode:
+        description: 'Build mode'
+        required: false
+        default: 'Build'
+        type: choice
+        options:
+          - Build
+          - Rebuild
+  pull_request:
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+
+jobs:
+  build:
+    runs-on: [AS6-runner]
+
+    env:
+      PROJECT: example/AsProject/AsProject.apj
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Find AS6 build executable
+        uses: loupeteam/br-actions/find-as6-build@v1
+        id: find-as
+
+      - name: Build Intel
+        uses: loupeteam/br-actions/build-as-project@v1
+        with:
+          exe-path:   ${{ steps.find-as.outputs.exe-path }}
+          project:    ${{ env.PROJECT }}
+          config:     Intel
+          build-mode: ${{ inputs.build-mode || 'Build' }}
+
+      - name: Build ARM
+        uses: loupeteam/br-actions/build-as-project@v1
+        with:
+          exe-path:   ${{ steps.find-as.outputs.exe-path }}
+          project:    ${{ env.PROJECT }}
+          config:     ARM
+          build-mode: ${{ inputs.build-mode || 'Build' }}
+
+      - name: Upload build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BuildDiagnostics
+          path: example/AsProject/Temp/BuildDiagnostics.log
+          if-no-files-found: ignore

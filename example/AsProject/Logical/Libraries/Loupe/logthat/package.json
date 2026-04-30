@@ -1,17 +1,21 @@
 {
   "name": "@loupeteam/logthat",
-  "version": "0.5.1",
-  "description": "Loupe's logthat library for Automation Runtime",
-  "homepage": "https://loupeteam.github.io/Sandbox/libraries/logthat.html",
-  "scripts": {},
-  "keywords": [],
+  "version": "1.0.0",
+  "description": "Logging library for B&R Automation Studio (ANSIC library)",
+  "homepage": "https://loupeteam.github.io/LoupeDocs/libraries/logthat.html",
   "author": "Loupe",
-  "license": "Loupe Software License Agreement",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/loupeteam/logthat"
+    "url": "https://github.com/loupeteam/LogThat"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "lpm": {
+    "type": "library"
   },
   "dependencies": {
-    "@loupeteam/stringext": ">=0.14.1"
+    "@loupeteam/stringext": "*"
   }
 }
