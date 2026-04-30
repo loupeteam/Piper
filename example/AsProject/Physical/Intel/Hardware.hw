@@ -1,30 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.11.2.75 FileVersion="4.9"?>
+<?AutomationStudio WorkingVersion="6.5" FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
-  <Module Name="5AC901.BX01-00" Type="5AC901.BX01-00" Version="1.1.0.0">
-    <Connection Connector="SY" TargetModule="5PC910.SX01-00" TargetConnector="SY3" />
-  </Module>
-  <Module Name="5AC901.IPLK-00" Type="5AC901.IPLK-00" Version="1.8.0.1">
-    <Connection Connector="SS" TargetModule="5PC910.SX01-00" TargetConnector="SS2" />
-  </Module>
-  <Module Name="5PC900_TS17_00" Type="5PC900.TS17-00" Version="2.1.0.0">
-    <Connection Connector="SY" TargetModule="5PC910.SX01-00" TargetConnector="SY1" />
-    <Parameter ID="ConfigurationID" Value="AsProject_Config1" />
-    <Parameter ID="UserRamDevice" Value="PCI.2.IPLK.SRAM" />
-    <Parameter ID="UserRamSize" Value="50000" />
-    <Parameter ID="RemMemDevice" Value="PCI.2.IPLK.SRAM" />
-    <Parameter ID="RemMemSize" Value="260000" />
-    <Parameter ID="PermanentPvSize" Value="120000" />
-    <Parameter ID="RemanentGlobalPvSize" Value="110000" />
-    <Parameter ID="VolatileGlobalPvSize" Value="3000000" />
-    <Group ID="FileDevice1" />
-    <Parameter ID="FileDeviceName1" Value="USER" />
-    <Parameter ID="FileDevicePath1" Value="USER_PATH" />
-  </Module>
-  <Module Name="5PC910.SX01-00" Type="5PC910.SX01-00" Version="2.1.0.0">
+  <Module Name="5AC901.IPLK-00" Type="5AC901.IPLK-00" Version="2.1.0.0">
+    <Connection Connector="SS" TargetModule="5APC4100_TGL1_000" TargetConnector="SS2" />
     <Connector Name="IF1">
-      <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
+      <Parameter ID="DNAConfiguration" Value="manual" />
     </Connector>
+  </Module>
+  <Module Name="5APC4100_TGL1_000" Type="5APC4100.TGL1-000" Version="1.3.1.0">
     <Connector Name="IF3">
       <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
       <Parameter ID="ActivateDevice" Value="1" />
@@ -35,9 +18,11 @@
     </Connector>
     <Connector Name="IF5">
       <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
+      <Parameter ID="ActivateDevice" Value="1" />
     </Connector>
     <Connector Name="IF6">
       <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
+      <Parameter ID="ActivateDevice" Value="1" />
     </Connector>
     <Connector Name="IF7">
       <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
@@ -48,5 +33,47 @@
     <Connector Name="IF9">
       <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
     </Connector>
+    <Connector Name="IF10">
+      <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
+    </Connector>
+    <Connector Name="IF11">
+      <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
+    </Connector>
+    <Connector Name="IF12">
+      <Parameter ID="AssignedOperatingSystem" Value="ARemb" />
+    </Connector>
+    <Parameter ID="ConfigurationID" Value="AsProject_Intel" />
+    <Parameter ID="UserPartitionSize" Value="300" />
+    <Parameter ID="Simulation" Value="1" />
+    <Parameter ID="UserRamDevice" Value="PCI.2.IPLK.SRAM" />
+    <Parameter ID="UserRamSize" Value="500000" />
+    <Parameter ID="RemMemDevice" Value="PCI.2.IPLK.SRAM" />
+    <Parameter ID="RemMemSize" Value="120000" />
+    <Parameter ID="PermanentPvSize" Value="10000" />
+    <Parameter ID="RemanentGlobalPvSize" Value="105000" />
+    <Parameter ID="VolatileGlobalPvSize" Value="1000000" />
+    <Parameter ID="TimerDeviceType" Value="EPLX2X" />
+    <Parameter ID="TimerDevice" Value="5AC901.IPLK-00.IF1" />
+    <Parameter ID="IdleTaskClass" Value="3" />
+    <Parameter ID="TaskClassIdleTime" Value="8000" />
+    <Parameter ID="Cyclic1Duration" Value="2000" />
+    <Parameter ID="Cyclic1Tolerance" Value="0" />
+    <Parameter ID="Cyclic2Duration" Value="10000" />
+    <Parameter ID="Cyclic3Duration" Value="20000" />
+    <Parameter ID="Cyclic3Tolerance" Value="40000" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="USER" />
+    <Parameter ID="FileDevicePath1" Value="USER_PATH" />
+    <Parameter ID="TimeZone" Value="25" />
+    <Parameter ID="ActivateFtpServer" Value="1" />
+    <Group ID="FtpUser1" />
+    <Parameter ID="FtpUsername1" Value="dev" />
+    <Parameter ID="FtpUserPassword1" Value="o33x/UifGm0mfwtuaZAada64hc3m8aosihbfwQCh3ow=" Description="dev" />
+    <Parameter ID="FtpUserSalt1" Value="2jAdfp5W" />
+    <Parameter ID="FTPAccessRight1" Value="0" />
+    <Parameter ID="FTPdevice1" Value="ALL" />
+    <Parameter ID="ActivateWebServer" Value="1" />
+    <Parameter ID="ActivateSdm" Value="1" />
+    <Parameter ID="SdmColor" Value="colorRGB" />
   </Module>
 </Hardware>

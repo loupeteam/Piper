@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.0.0?>
+<Library xmlns="http://br-automation.co.at/AS/Library" Description="This library contains FBKs for exchanging data packets via datagram sockets (UDP).">
+  <Files>
+    <File>AsUDP.fun</File>
+    <File>AsUDP.typ</File>
+    <File>AsUDP.var</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="runtime" />
+  </Dependencies>
+</Library>

@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* stringext 0.14.4 */
+/* stringext 1.0.0 */
 
 #ifndef _STRINGEXT_
 #define _STRINGEXT_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _stringext_VERSION
-#define _stringext_VERSION 0.14.4
+#define _stringext_VERSION 1.0.0
 #endif
 
 #include <bur/plctypes.h>
@@ -18,32 +18,20 @@ extern "C"
 #define _BUR_PUBLIC
 #endif
 #ifdef _SG3
-		#include "AsBrStr.h"
 		#include "astime.h"
+		#include "AsBrStr.h"
 		#include "AsBrWStr.h"
 #endif
 #ifdef _SG4
-		#include "AsBrStr.h"
 		#include "astime.h"
+		#include "AsBrStr.h"
 		#include "AsBrWStr.h"
 #endif
 #ifdef _SGC
-		#include "AsBrStr.h"
 		#include "astime.h"
+		#include "AsBrStr.h"
 		#include "AsBrWStr.h"
 #endif
-
-
-/* Constants */
-#ifdef _REPLACE_CONST
- #define STREXT_INVALID_CHAR 221U
- #define STREXT_MAX_UDINT 4294967295U
-#else
- _GLOBAL_CONST unsigned char STREXT_INVALID_CHAR;
- _GLOBAL_CONST unsigned long STREXT_MAX_UDINT;
-#endif
-
-
 
 
 /* Datatypes and datatypes of function blocks */
@@ -85,6 +73,22 @@ _BUR_PUBLIC unsigned char wchar2char(unsigned short wcharacter);
 _BUR_PUBLIC signed long formatString(plcstring* dest, unsigned long destSize, plcstring* format, struct StrExtArgs_typ* pArgs);
 _BUR_PUBLIC unsigned long stringfTime(unsigned long dest, unsigned long destSize, unsigned long format, plcdt time);
 _BUR_PUBLIC plcdt stringpTime(unsigned long src, unsigned long format);
+_BUR_PUBLIC unsigned long stringdtoa(double value, plcstring* buffer, unsigned long ndigits, unsigned long bufferSize);
+_BUR_PUBLIC unsigned long stringftoa(float value, plcstring* buffer, unsigned long ndigits, unsigned long bufferSize);
+_BUR_PUBLIC double stringstrtod(plcstring* value, plcstring** pEnd);
+_BUR_PUBLIC float stringstrtof(plcstring* value, plcstring** pEnd);
+
+
+/* Constants */
+#ifdef _REPLACE_CONST
+ #define STREXT_INVALID_CHAR 221U
+ #define STREXT_MAX_UDINT 4294967295U
+#else
+ _GLOBAL_CONST unsigned char STREXT_INVALID_CHAR;
+ _GLOBAL_CONST unsigned long STREXT_MAX_UDINT;
+#endif
+
+
 
 
 #ifdef __cplusplus

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.0.0?>
+<Library xmlns="http://br-automation.co.at/AS/Library" Description="This library integrates mathematical functions such as angle functions, rounding off, etc. into the program.">
+  <Files>
+    <File>AsBrMath.fun</File>
+    <File>AsBrMath.typ</File>
+    <File>AsBrMath.var</File>
+  </Files>
+</Library>

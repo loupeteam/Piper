@@ -4,7 +4,7 @@
   <Objects>
     <Object Type="File" Description="Hardware configuration">Hardware.hw</Object>
     <Object Type="File" Description="Hardware topology">Hardware.hwl</Object>
-    <Object Type="Cpu">5PC900_TS17_00</Object>
+    <Object Type="Cpu" Description="Starter Automation Studio project.">5APC4100_TGL1_000</Object>
     <Object Type="File">Hardware.jpg</Object>
   </Objects>
   <Sources Download="false" IncludeUpgrades="true" Mode="ProjectTransfer" Option="Complete" />
