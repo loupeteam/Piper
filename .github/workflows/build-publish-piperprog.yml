@@ -1,0 +1,123 @@
+name: Build and Publish piperprog
+
+# Program-package publish for PiperProg (the MachineControl programs (MachineProg + MachineHMI)
+# inside this repo). Separate from the Piper library publish because:
+#  - ErrorLib (library) and PiperProg (program) follow independent release
+#    cadences. The program changes much less often.
+#  - Library is binary-published; program is source-only.
+#
+# Trigger: workflow_dispatch only. No tag-based auto-trigger to keep the
+# release independent from the library's `v*.*.*` tag.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g. v1.0.0)'
+        required: true
+
+jobs:
+  build-publish:
+    runs-on: [AS6-runner]
+
+    permissions:
+      contents: read
+      packages: write
+
+    env:
+      PROJECT:     example/AsProject/AsProject.apj
+      PACKAGE_DIR: src/Ar/MachineControl
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@loupeteam'
+
+      - name: Resolve version
+        id: version
+        shell: pwsh
+        run: |
+          $ver = "${{ inputs.version }}" -replace '^v', ''
+          if (-not $ver) {
+            Write-Error "Could not determine version. Supply the version input (e.g. v1.0.0)."
+            exit 1
+          }
+          Write-Host "Publishing version: $ver"
+          "version=$ver" | Out-File -Append -Encoding utf8 -FilePath $env:GITHUB_OUTPUT
+
+      - name: Verify program package
+        shell: pwsh
+        run: |
+          $pkgPath = Join-Path "${{ env.PACKAGE_DIR }}" "package.json"
+          if (-not (Test-Path $pkgPath)) {
+            Write-Error "package.json not found at $pkgPath"
+            exit 1
+          }
+          $pkg = Get-Content $pkgPath -Raw | ConvertFrom-Json
+          if ($pkg.lpm.type -ne 'program') {
+            Write-Error "Expected lpm.type == 'program' in $pkgPath, got '$($pkg.lpm.type)'. This workflow is for program packages only."
+            exit 1
+          }
+          Write-Host "Confirmed program package: $($pkg.name)"
+
+      - name: Find AS6 build executable
+        uses: loupeteam/br-actions/find-as6-build@v1
+        id: find-as
+
+      - name: Build Intel
+        uses: loupeteam/br-actions/build-as-project@v1
+        with:
+          exe-path: ${{ steps.find-as.outputs.exe-path }}
+          project:  ${{ env.PROJECT }}
+          config:   Intel
+
+      - name: Build ARM
+        uses: loupeteam/br-actions/build-as-project@v1
+        with:
+          exe-path: ${{ steps.find-as.outputs.exe-path }}
+          project:  ${{ env.PROJECT }}
+          config:   ARM
+
+      - name: Set package version
+        shell: pwsh
+        run: |
+          Push-Location "${{ env.PACKAGE_DIR }}"
+          npm version "${{ steps.version.outputs.version }}" --no-git-tag-version --allow-same-version
+          Pop-Location
+
+      - name: Copy README into package
+        shell: pwsh
+        run: |
+          if (Test-Path README.md) {
+            Copy-Item -Path README.md -Destination "${{ env.PACKAGE_DIR }}/README.md" -Force
+          }
+
+      - name: Publish to GitHub Packages
+        shell: pwsh
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          Push-Location "${{ env.PACKAGE_DIR }}"
+          npm publish
+          Pop-Location
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: piperprog-${{ steps.version.outputs.version }}
+          path: ${{ env.PACKAGE_DIR }}/
+          if-no-files-found: error
+
+      - name: Upload build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BuildDiagnostics
+          path: example/AsProject/Temp/BuildDiagnostics.log
+          if-no-files-found: ignore

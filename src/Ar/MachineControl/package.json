@@ -1,17 +1,21 @@
 {
   "name": "@loupeteam/piperprog",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "This is a program package that will add the Machine HMI Program and Machine Program to your AS project",
+  "homepage": "https://loupeteam.github.io/LoupeDocs/programs/piperprog.html",
   "author": "Loupe",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/loupeteam/Piper.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
-    "@loupeteam/logthat": "^0.5.1",
-    "@loupeteam/piper": "^0.01.8",
-    "@loupeteam/hmitools": "^0.11.4"
+    "@loupeteam/logthat": ">=1.0.0",
+    "@loupeteam/piper": ">=1.0.0",
+    "@loupeteam/hmitools": ">=1.0.0"
   },
   "lpm": {
     "type": "program",
