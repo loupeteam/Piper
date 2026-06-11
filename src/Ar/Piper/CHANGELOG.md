@@ -1,5 +1,7 @@
 # Change log
 
+1.0.0 - AS6 migration. Update project to Automation Studio 6, add GHA workflows, fix AS6 build issues. Bump deps to AS6-compatible versions (`@loupeteam/logthat`, `@loupeteam/stringext` >=1.0.0).
+
 0.3.0 - Add support for multiple PLCs
 
 0.2.0 - Expand stringext dependency
